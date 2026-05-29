@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-display: "Cinzel", Georgia, serif;
+
+  /* Custom Hoya/Georgetown Branded Colors */
+  --color-hoya-blue: #041E42;
+  --color-hoya-gray: #8C9093;
+  --color-hoya-gold: #C5A059;
+  --color-hoya-navy: #0B2545;
+  --color-hoya-light: #F4F6F9;
+}
+
+/* Custom scrollbar and aesthetic additions */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: #F8FAFC;
+}
+
+/* Smooth active state transitions */
+.transition-all-custom {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
