@@ -1,24 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-serif: "Playfair Display", Georgia, Cambria, serif;
-  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", monospace;
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-serif-zh: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
 
-  /* Custom Hoya/Georgetown Branded Colors */
-  --color-hoya-blue: #041E42;
-  --color-hoya-gray: #8C9093;
-  --color-hoya-gold: #C5A059;
-  --color-hoya-navy: #0B2545;
-  --color-hoya-light: #F4F6F9;
+  /* Custom Hoya/Georgetown Restrained Private Club Palette */
+  --color-hoya-blue: #071426;
+  --color-hoya-gray: #667085;
+  --color-hoya-gold: #C6A15B;
+  --color-hoya-gold-light: #D8B86A;
+  --color-hoya-navy: #0D1E33;
+  --color-hoya-oxford: #122844;
+  --color-hoya-ivory: #F7F3EA;
+  --color-hoya-parchment: #EFE7D8;
+  --color-hoya-stone: #D8D3C8;
+  --color-hoya-light: #FBF9F6;
+  
+  --color-club-border: rgba(8, 24, 44, 0.08);
+  --color-club-border-dark: rgba(255, 255, 255, 0.12);
 }
 
 /* Custom scrollbar and aesthetic additions */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,21 +34,40 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: var(--color-hoya-stone);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--color-hoya-gold);
 }
 
 html, body, #root {
   min-height: 100vh;
   font-family: var(--font-sans);
-  background-color: #F8FAFC;
+  background-color: var(--color-hoya-light);
+  color: var(--color-hoya-blue);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth active state transitions */
+/* Elegant microtransitions */
 .transition-all-custom {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Typography Helpers */
+.elegant-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.serif-display-en {
+  font-family: var(--font-serif);
+}
+
+.serif-display-zh {
+  font-family: var(--font-serif-zh);
 }

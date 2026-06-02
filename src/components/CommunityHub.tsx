@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, PlusCircle, MessageSquare, Phone, BadgeDollarSign, MapPin, Sparkles, Filter, Trash2 } from 'lucide-react';
+import { Search, PlusCircle, MessageSquare, MapPin, Sparkles, Trash2, BadgeDollarSign } from 'lucide-react';
 import { Post } from '../types';
 
 export default function CommunityHub() {
@@ -124,82 +124,82 @@ export default function CommunityHub() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 text-[#071426]">
       
       {/* Intro section text */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-slate-200 pb-8">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C5A059] font-mono">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-[#08142c]/8 pb-8">
+        <div className="max-w-3xl">
+          <span className="text-[10px] font-mono tracking-[0.25em] text-[#C6A15B] uppercase block mb-1">
             GU CSSA Neighborhood Help Board
           </span>
-          <h2 className="text-3xl font-black text-[#041E42] tracking-tight mt-1">
-            乔大生活圈：周边拼房、长短租与闲置交易板
+          <h2 className="text-3xl font-light tracking-tight mt-1 leading-tight serif-display-zh">
+            拼合住宿、学舍求房与 flea market 交易市集
           </h2>
-          <p className="text-gray-500 text-sm mt-2 max-w-3xl leading-relaxed">
-            欢迎来到乔治城学者专属拼房与交易市集。无论你是在 Rosslyn、Glover Park 寻觅投契的女室友、在毕业季折价变卖二手家具，还是求租临时客厅，你都可以在本广场自主发帖！(本板数据存储于您当前的本地浏览器中)
+          <p className="text-slate-500 text-xs sm:text-[13px] mt-2 leading-relaxed">
+            欢迎查阅大华府学者自治布告栏。本版旨在促进各学院学者自主互助：求拼房、转赠宜家床垫及教材、或者寻找安全的 Glover Park 室友。所有发帖数据仅独立私密存储于您的当前本地浏览器中。
           </p>
         </div>
 
         <button
           id="community-new-post-btn"
           onClick={() => setShowPostModal(true)}
-          className="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3.5 bg-[#041E42] hover:bg-[#0B2545] text-white font-bold rounded-xl text-xs shadow-lg shadow-[#041E42]/10 hover:shadow-xl transition-all duration-300"
+          className="flex-shrink-0 flex items-center justify-center gap-2 px-5 py-3.5 bg-[#071426] hover:bg-[#122844] text-white font-mono text-xs uppercase tracking-wider rounded transition-all duration-200 cursor-pointer"
         >
-          <PlusCircle className="w-4.5 h-4.5 text-[#C5A059]" />
-          <span>自主发帖 / 闲置求房单</span>
+          <PlusCircle className="w-4 h-4 text-[#C6A15B]" />
+          <span>自主发帖 Post Notice</span>
         </button>
       </div>
 
       {/* Control panel and filters split */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-3.5 border-b border-[#08142c]/5">
         
         {/* Left Toggles */}
-        <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1.5 md:pb-0">
+        <div className="flex gap-1.5 overflow-x-auto scrollbar-none pb-1.5 md:pb-0">
           <button
             id="community-tab-all"
             onClick={() => setActiveTab('all')}
-            className={`px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+            className={`px-4.5 py-2.5 text-xs font-medium rounded transition-all duration-200 border cursor-pointer ${
               activeTab === 'all'
-                ? 'bg-[#041E42] text-[#C5A059] shadow-sm'
-                : 'text-gray-500 hover:text-gray-900 hover:bg-slate-100'
+                ? 'bg-[#071426] text-white border-hoya-gold/40 shadow-sm'
+                : 'text-slate-500 hover:text-slate-900 border-transparent'
             }`}
           >
-            🔍 全部告示 ({posts.length})
+            全部告示 Notice ({posts.length})
           </button>
           <button
             id="community-tab-housing"
             onClick={() => setActiveTab('housing')}
-            className={`px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+            className={`px-4.5 py-2.5 text-xs font-medium rounded transition-all duration-200 border cursor-pointer ${
               activeTab === 'housing'
-                ? 'bg-blue-50 text-blue-700 border border-blue-100'
-                : 'text-gray-500 hover:text-gray-900 hover:bg-slate-100'
+                ? 'bg-[#071426] text-white border-hoya-gold/40 shadow-sm'
+                : 'text-slate-500 hover:text-slate-900 border-transparent'
             }`}
           >
-            🏠 周边租房拼房 ({posts.filter(p => p.category === 'housing').length})
+            本山及周边拼房 ({posts.filter(p => p.category === 'housing').length})
           </button>
           <button
             id="community-tab-marketplace"
             onClick={() => setActiveTab('marketplace')}
-            className={`px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+            className={`px-4.5 py-2.5 text-xs font-medium rounded transition-all duration-200 border cursor-pointer ${
               activeTab === 'marketplace'
-                ? 'bg-amber-50 text-amber-700 border border-amber-100'
-                : 'text-gray-500 hover:text-gray-900 hover:bg-slate-100'
+                ? 'bg-[#071426] text-white border-hoya-gold/40 shadow-sm'
+                : 'text-slate-500 hover:text-slate-900 border-transparent'
             }`}
           >
-            📦 闲置 flea-market ({posts.filter(p => p.category === 'marketplace').length})
+            闲置二手 ({posts.filter(p => p.category === 'marketplace').length})
           </button>
         </div>
 
         {/* Right Search Input Box */}
         <div className="relative max-w-sm w-full">
-          <Search className="absolute left-3.5 top-1/2 -convert-y -translate-y-1/2 text-gray-400 w-4.5 h-4.5" />
+          <Search className="absolute left-3.5 top-1/2 -convert-y -translate-y-1/2 text-slate-400 w-4 h-4" />
           <input
             type="text"
             id="community-search-input"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="搜索物品名、房源地段、发帖人、微信号..."
-            className="w-full pl-10 pr-4 py-2 bg-white text-gray-800 border border-slate-200 focus:border-[#041E42] focus:outline-none rounded-xl text-xs shadow-inner"
+            placeholder="搜索地段、闲置物品、发帖人、联系方式..."
+            className="w-full pl-9 pr-4 py-2.5 bg-white text-[#071426] border border-[#08142c]/10 focus:border-[#C6A15B] focus:outline-none rounded text-xs transition duration-200 placeholder-slate-400"
           />
         </div>
 
@@ -207,40 +207,39 @@ export default function CommunityHub() {
 
       {/* Grid containing listings cards */}
       {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredPosts.map((post) => {
             const isCustom = post.id.startsWith('post-custom-');
             return (
               <div 
                 key={post.id} 
                 id={`community-post-${post.id}`}
-                className="bg-white border border-slate-200/75 rounded-2xl p-6 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                className="bg-white border border-[#08142c]/6 rounded p-6.5 hover:shadow-xs transition-all duration-300 flex flex-col justify-between group"
               >
                 <div className="space-y-4">
                   
                   {/* Card head metadata */}
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <div className="flex items-center justify-between border-b border-slate-50 pb-3">
                     <div className="flex items-center gap-2">
-                      <span className={`text-[10px] font-bold tracking-wider font-mono px-2.5 py-1 rounded-full uppercase ${
+                      <span className={`text-[8px] font-bold tracking-widest font-mono px-2 py-0.5 rounded uppercase border ${
                         post.category === 'housing' 
-                          ? 'bg-blue-50 text-blue-600' 
-                          : 'bg-amber-50 text-amber-600'
+                          ? 'bg-[#071426]/5 text-[#071426] border-[#071426]/10' 
+                          : 'bg-[#C6A15B]/5 text-[#C6A15B] border-[#C6A15B]/25'
                       }`}>
-                        {post.category === 'housing' ? '🏢 合租拼房' : '🏷️ Flea Market'}
+                        {post.category === 'housing' ? '🏢 HOUSING / 拼房' : '🏷️ MARKETPLACE / 闲置'}
                       </span>
-                      <span className="text-[10px] text-gray-400 font-mono">{post.date}</span>
+                      <span className="text-[10px] text-slate-400 font-mono">{post.date}</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      {/* Author stamp */}
-                      <span className="text-[11px] text-slate-500 font-medium">By: {post.author}</span>
+                    <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                      <span className="scale-90 bg-slate-50 px-2 py-0.5 rounded font-medium text-slate-500">By {post.author}</span>
                       
                       {/* Allow deleting custom posts */}
                       {isCustom && (
                         <button
                           id={`delete-post-btn-${post.id}`}
                           onClick={() => handleDeletePost(post.id)}
-                          className="p-1 rounded bg-slate-100 text-rose-500 hover:bg-rose-50 hover:text-rose-600 transition"
+                          className="p-1 rounded text-red-500 hover:bg-rose-50 hover:text-red-700 transition"
                           title="删除我的帖子"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -250,11 +249,11 @@ export default function CommunityHub() {
                   </div>
 
                   {/* Body Text */}
-                  <div className="space-y-1.5">
-                    <h4 className="font-extrabold text-gray-900 text-sm leading-snug line-clamp-2">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-[#071426] text-[14.5px] leading-snug line-clamp-2 font-serif-zh">
                       {post.title}
                     </h4>
-                    <p className="text-gray-600 text-xs leading-relaxed font-normal whitespace-pre-wrap">
+                    <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed font-normal whitespace-pre-wrap">
                       {post.content}
                     </p>
                   </div>
@@ -262,27 +261,27 @@ export default function CommunityHub() {
                 </div>
 
                 {/* Footer contact details */}
-                <div className="mt-5 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="mt-6 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
                   
                   {/* Pricing/Location indicators */}
                   {post.category === 'housing' && post.location && (
-                    <div className="flex items-center gap-1.5 text-gray-700 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200/50">
-                      <MapPin className="w-4 h-4 text-sky-500" />
-                      <span className="font-bold">{post.location}</span>
+                    <div className="flex items-center gap-1 text-slate-600 font-mono text-[11px] bg-slate-50 px-2.5 py-1 rounded">
+                      <MapPin className="w-3.5 h-3.5 text-[#C6A15B] stroke-[1.5]" />
+                      <span className="font-semibold">{post.location}</span>
                     </div>
                   )}
 
                   {post.category === 'marketplace' && post.price && (
-                    <div className="flex items-center gap-1.5 text-amber-800 bg-amber-50 px-2.5 py-1.5 rounded-lg border border-amber-200/40">
-                      <BadgeDollarSign className="w-4 h-4 text-emerald-500" />
+                    <div className="flex items-center gap-1 text-[#C6A15B] font-mono text-[11px] bg-[#FAF9F6] px-2.5 py-1 rounded border border-[#C6A15B]/20">
+                      <BadgeDollarSign className="w-3.5 h-3.5 text-[#C6A15B] stroke-[1.5]" />
                       <span className="font-bold">{post.price}</span>
                     </div>
                   )}
 
                   {/* Reply Action detail */}
-                  <div className="flex items-center gap-2 bg-[#041E42]/5 text-[#041E42] px-3 py-1.5 rounded-xl border border-[#041E42]/5">
-                    <MessageSquare className="w-4 h-4 text-[#C5A059]" />
-                    <span className="font-semibold select-all text-[11px]">{post.contact}</span>
+                  <div className="flex items-center gap-2 bg-[#071426]/5 px-3 py-1.5 rounded text-[11px] font-mono text-[#071426]">
+                    <MessageSquare className="w-3.5 h-3.5 text-[#C6A15B] stroke-[1.5]" />
+                    <span className="font-bold select-all">{post.contact}</span>
                   </div>
 
                 </div>
@@ -292,15 +291,15 @@ export default function CommunityHub() {
           })}
         </div>
       ) : (
-        <div className="bg-white border border-slate-200 rounded-3xl p-16 text-center space-y-4 max-w-xl mx-auto">
-          <Sparkles className="w-12 h-12 text-[#C5A059] mx-auto opacity-70" />
-          <h3 className="text-lg font-bold text-gray-900">未找到任何拼房或商品交易通知</h3>
-          <p className="text-gray-500 text-xs">
-            换个关键词试试，或者点击右上角「自主发帖」成为本类别第一份合租与闲置告示！
+        <div className="bg-white border border-[#08142c]/6 rounded p-16 text-center space-y-4 max-w-xl mx-auto">
+          <Sparkles className="w-10 h-10 text-[#C6A15B] mx-auto animate-pulse" />
+          <h3 className="text-lg font-light serif-display-zh">未检索到关联学舍或闲置通报</h3>
+          <p className="text-slate-400 text-xs">
+            尝试更换检索词汇，或者自主发起新帖。数据将立即保存在您本地。
           </p>
           <button
             onClick={() => { setSearchQuery(''); setActiveTab('all'); }}
-            className="text-xs font-bold text-[#041E42] underline"
+            className="text-xs font-bold text-[#071426] underline cursor-pointer"
           >
             重置分类
           </button>
@@ -309,134 +308,134 @@ export default function CommunityHub() {
 
       {/* Creation Modal */}
       {showPostModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#071426]/75 backdrop-blur-xs transition-opacity overflow-y-auto">
           <div 
             id="community-post-modal"
-            className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto my-8"
+            className="bg-white rounded max-w-lg w-full p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto my-8"
           >
             
             <div className="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-5">
-              <h3 className="font-extrabold text-[#041E42] text-base">发布互助帖子 (拼房 / 闲置互通)</h3>
+              <h3 className="font-semibold text-[#071426] text-[15px] serif-display-zh">发起周边交易及合租告示</h3>
               <button 
                 onClick={() => setShowPostModal(false)}
-                className="p-1 rounded-full text-gray-400 hover:bg-slate-100 hover:text-gray-700 transition"
+                className="p-1 rounded text-slate-400 hover:text-slate-700 transition"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleCreatePost} className="space-y-4">
+            <form onSubmit={handleCreatePost} className="space-y-4 font-sans text-xs text-slate-700">
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5 text-xs text-gray-700">
-                  <label className="font-bold block">发布类别 *</label>
+                <div className="space-y-1.5">
+                  <label className="font-semibold block text-[#071426]">通告类别 *</label>
                   <select
                     id="post-category"
                     value={postCategory}
                     onChange={(e) => setPostCategory(e.target.value as any)}
-                    className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm bg-white"
+                    className="w-full px-3 py-2.5 border border-slate-300 rounded text-xs bg-white focus:outline-none focus:border-[#C6A15B]"
                   >
                     <option value="housing">🏢 周边合租拼房房源</option>
-                    <option value="marketplace">🏷️ Flea Market 闲置杂货出让</option>
+                    <option value="marketplace">🏷️ Flea Market 闲置物让</option>
                   </select>
                 </div>
 
-                <div className="space-y-1.5 text-xs text-gray-700">
-                  <label className="font-bold block">你的称呼/身份 *</label>
+                <div className="space-y-1.5">
+                  <label className="font-semibold block text-[#071426]">你的称呼与NetID *</label>
                   <input
                     type="text"
                     id="post-author"
                     required
                     value={postAuthor}
                     onChange={(e) => setPostAuthor(e.target.value)}
-                    placeholder="例如: 蒋同学 (商学商科)"
-                    className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                    placeholder="例: 林同学 (Bio硕士)"
+                    className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-[#C6A15B]"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5 text-xs text-gray-700">
-                <label className="font-bold block">帖子标题 * (简要阐述物品名或合租意图)</label>
+              <div className="space-y-1.5">
+                <label className="font-semibold block text-[#071426]">告示标题 *</label>
                 <input
                   type="text"
                   id="post-title"
                   required
                   value={postTitle}
                   onChange={(e) => setPostTitle(e.target.value)}
-                  placeholder="例如: Rosslyn 豪华公寓 CV 主卧低价降租招安静小姐姐"
-                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                  placeholder="例: Rosslyn 1B1B 带全套家具寻少煮饭女舍友"
+                  className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-[#C6A15B]"
                 />
               </div>
 
               {postCategory === 'housing' ? (
-                <div className="space-y-1.5 text-xs text-gray-700">
-                  <label className="font-bold block">房源大致区域 (如 Rosslyn, Glover Park, Burleith)</label>
+                <div className="space-y-1.5">
+                  <label className="font-semibold block text-[#071426]">大致地区 (如 Rosslyn, Glover Park)</label>
                   <input
                     type="text"
                     id="post-location"
                     value={postLocation}
                     onChange={(e) => setPostLocation(e.target.value)}
-                    placeholder="例如: Glover Park, DC"
-                    className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                    placeholder="例如: Rosslyn, VA"
+                    className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-[#C6A15B]"
                   />
                 </div>
               ) : (
-                <div className="space-y-1.5 text-xs text-gray-700">
-                  <label className="font-bold block">拟定价格 / 币种 (如 $35 刀, $5面议等)</label>
+                <div className="space-y-1.5">
+                  <label className="font-semibold block text-[#071426]">拟定出让价格 (USD或面议)</label>
                   <input
                     type="text"
                     id="post-price"
                     value={postPrice}
                     onChange={(e) => setPostPrice(e.target.value)}
-                    placeholder="例如: $45 / 面议"
-                    className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                    placeholder="例如: $40"
+                    className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-[#C6A15B]"
                   />
                 </div>
               )}
 
-              <div className="space-y-1.5 text-xs text-gray-700">
-                <label className="font-bold block">详细内容描述 * (详细补充房间情况、家具磨损度、自提方式)</label>
+              <div className="space-y-1.5">
+                <label className="font-semibold block text-[#071426]">通告正文细节描述 *</label>
                 <textarea
                   id="post-content"
                   required
                   rows={4}
                   value={postContent}
                   onChange={(e) => setPostContent(e.target.value)}
-                  placeholder="描述中多写写周边班车频率、杂费自理、家具是赠是卖等更易速成交易..."
-                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm resize-none"
+                  placeholder="详细列举房屋配置、采光、舍友期望要求、或出让物品折旧度与自提地点..."
+                  className="w-full px-3 py-2 border border-slate-300 rounded text-xs resize-none focus:outline-none focus:border-[#C6A15B]"
                 />
               </div>
 
-              <div className="space-y-1.5 text-xs text-gray-700">
-                <label className="font-bold block">联系方式 * (微信 / 手机 / 邮箱 任意即可)</label>
+              <div className="space-y-1.5">
+                <label className="font-semibold block text-[#071426]">联系方式 * (微信 / 邮箱 / 电话)</label>
                 <input
                   type="text"
                   id="post-contact"
                   required
                   value={postContact}
                   onChange={(e) => setPostContact(e.target.value)}
-                  placeholder="例如: 微信: hoyas_stu 或 Email: abc@georgetown.edu"
-                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                  placeholder="例: wechat: abc_hoya 或 mail: abc@georgetown.edu"
+                  className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-[#C6A15B]"
                 />
               </div>
 
-              <div className="bg-blue-50 text-[10px] text-blue-700 leading-normal p-3 rounded-xl border border-blue-200/50">
-                ⚠️ 发帖须知：请勿发布非法中介、高利房贷、枪支以及任何欺诈性广告。GU CSSA 仅提供纯净的同学交流平台，拼房交易时切勿提前给无第三方安全机构支付巨额定金。
+              <div className="bg-[#FAF9F6] text-[10px] text-amber-800 leading-relaxed p-3.5 rounded border border-[#C6A15B]/25">
+                📢 学联提醒：本版面为自主互助信息交换版。在签定正式公寓长租/次期租约或面交高值数码设备前，切勿草率向非官方账户进行任何形式的大额转账抵押。
               </div>
 
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowPostModal(false)}
-                  className="w-1/3 py-3 border border-slate-200 text-gray-600 rounded-xl font-bold text-xs hover:bg-slate-50 transition"
+                  className="w-1/3 py-2.5 border border-slate-200 text-slate-500 rounded font-bold text-xs hover:bg-slate-50 transition"
                 >
-                  取消
+                  取消 Cancel
                 </button>
                 <button
                   type="submit"
-                  className="w-2/3 py-3 bg-[#041E42] text-white rounded-xl font-bold text-xs hover:bg-[#0B2545] shadow-md shadow-[#041E42]/10 transition"
+                  className="w-2/3 py-2.5 bg-[#071426] text-white rounded font-bold text-xs hover:bg-[#122844] transition-all"
                 >
-                  确认发布
+                  发布告示 Publish
                 </button>
               </div>
 

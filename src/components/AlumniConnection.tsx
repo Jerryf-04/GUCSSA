@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
-import { Search, GraduationCap, Briefcase, Globe, Mail, Landmark, Sparkles, Award, ArrowUpRight } from 'lucide-react';
-
-interface AlumProfile {
-  name: string;
-  englishName: string;
-  degree: string;
-  year: string;
-  school: string;
-  role: string;
-  achievement: string;
-  chineseAchievement: string;
-  image: string;
-  category: 'notable' | 'chinese';
-}
+import { Search, GraduationCap, Briefcase, Globe, Award, Sparkles, Send } from 'lucide-react';
+import { AlumProfile } from '../types';
 
 export default function AlumniConnection() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -193,33 +181,33 @@ export default function AlumniConnection() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-16">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-16">
       
       {/* Premium Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A059] font-mono bg-[#041E42]/5 px-3.5 py-1.5 rounded-full inline-block">
+        <span className="text-[10px] font-mono tracking-[0.25em] text-[#C6A15B] uppercase font-semibold">
           Georgetown Alumni Network & Legacy
         </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#041E42] tracking-tight font-serif">
-          乔治城杰出校友与美东校友桥梁
+        <h2 className="text-3xl font-light text-[#071426] tracking-tight serif-display-zh leading-tight">
+          乔治城杰出校友与亚太事务智库
         </h2>
-        <div className="w-12 h-[2px] bg-[#C5A059] mx-auto my-3" />
-        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto font-normal">
+        <div className="w-12 h-[1px] bg-hoya-gold/50 mx-auto my-3" />
+        <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed max-w-2xl mx-auto font-normal">
           「Hoya once, Hoya always.」
-          这里陈列了部分从乔治城大学（GU）走出的世界级行业领军人、政治领袖、外交先驱。GU CSSA 长期联动美东华盛顿特区、纽约、波士顿校友会，竭诚为在校中外学者搭建无障碍内推、跨界对话、及精英职业辅导的至臻纽带。
+          自1789年建校以来，乔治城大学培养了无数在世界地缘行政、跨国商贸及中国文化领域的行业领袖。学联致力于汇集美东精英力量，在华盛顿特区官方向往来学者、学子提供一对一职业导师（Coffee Chat）及内推契机。
         </p>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-between border-b border-slate-200/60 pb-6">
-        <div className="flex bg-slate-100 p-1.5 rounded-xl gap-1 w-full md:w-auto">
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between border-b border-[#08142c]/8 pb-6">
+        <div className="flex bg-[#FAF9F6] border border-[#08142c]/5 p-1 rounded gap-1 w-full md:w-auto">
           <button
             id="alum-tab-all"
             onClick={() => setActiveSegment('all')}
-            className={`flex-1 md:flex-none px-4 py-2 text-xs font-bold rounded-lg transition-all duration-300 ${
+            className={`flex-1 md:flex-none px-4.5 py-2 text-xs font-medium rounded transition-all duration-300 cursor-pointer ${
               activeSegment === 'all'
-                ? 'bg-[#041E42] text-[#C5A059] shadow-sm'
-                : 'text-gray-500 hover:text-gray-900'
+                ? 'bg-[#071426] text-[#FAF6EE]'
+                : 'text-slate-500 hover:text-slate-900'
             }`}
           >
             全部杰出校友
@@ -227,10 +215,10 @@ export default function AlumniConnection() {
           <button
             id="alum-tab-notable"
             onClick={() => setActiveSegment('notable')}
-            className={`flex-1 md:flex-none px-4 py-2 text-xs font-bold rounded-lg transition-all duration-300 ${
+            className={`flex-1 md:flex-none px-4.5 py-2 text-xs font-medium rounded transition-all duration-300 cursor-pointer ${
               activeSegment === 'notable'
-                ? 'bg-[#041E42] text-[#C5A059] shadow-sm'
-                : 'text-gray-500 hover:text-gray-900'
+                ? 'bg-[#071426] text-[#FAF6EE]'
+                : 'text-slate-500 hover:text-slate-900'
             }`}
           >
             全球政要巨擘
@@ -238,10 +226,10 @@ export default function AlumniConnection() {
           <button
             id="alum-tab-chinese"
             onClick={() => setActiveSegment('chinese')}
-            className={`flex-1 md:flex-none px-4 py-2 text-xs font-bold rounded-lg transition-all duration-300 ${
+            className={`flex-1 md:flex-none px-4.5 py-2 text-xs font-medium rounded transition-all duration-300 cursor-pointer ${
               activeSegment === 'chinese'
-                ? 'bg-[#041E42] text-[#C5A059] shadow-sm'
-                : 'text-gray-500 hover:text-gray-900'
+                ? 'bg-[#071426] text-[#FAF6EE]'
+                : 'text-slate-500 hover:text-slate-900'
             }`}
           >
             大中华区翘楚
@@ -249,14 +237,14 @@ export default function AlumniConnection() {
         </div>
 
         <div className="relative w-full md:w-72">
-          <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -convert-y -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
             id="alum-search-input"
             placeholder="搜索姓名 / 拼音 / 学院 / 领域..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] rounded-xl text-xs font-normal shadow-xs transition"
+            className="w-full pl-9 pr-4 py-2.5 bg-white border border-[#08142c]/10 focus:outline-none focus:border-[#C6A15B] rounded text-xs transition duration-200 placeholder-slate-400"
           />
         </div>
       </div>
@@ -267,199 +255,195 @@ export default function AlumniConnection() {
           <div
             key={index}
             id={`alum-card-${alum.englishName.replace(/\s+/g, '-').toLowerCase()}`}
-            className="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-[#C5A059]/40 transition-all duration-300 flex flex-col justify-between group"
+            className="bg-white border border-[#08142c]/6 rounded p-6.5 hover:shadow-xs transition-all duration-300 flex flex-col justify-between group"
           >
-            <div>
-              {/* Header Visual Backdrop */}
-              <div className="h-2.5 bg-[#041E42] opacity-80 group-hover:bg-[#C5A059] transition-colors" />
+            <div className="space-y-4">
               
-              <div className="p-6 space-y-4">
-                {/* Profile Overview Header */}
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1">
-                    <span className="text-[10px] text-[#C5A059] font-mono font-bold tracking-widest uppercase flex items-center gap-1">
-                      <GraduationCap className="w-3.5 h-3.5" />
-                      {alum.school.includes('SFS') ? 'SFS 外交学院' : 'GRADUATE ALUM'}
+              {/* Profile Overview Header */}
+              <div className="flex items-start justify-between">
+                <div className="space-y-1">
+                  <span className="text-[9px] text-[#C6A15B] font-mono tracking-widest uppercase flex items-center gap-1">
+                    <GraduationCap className="w-3.5 h-3.5" />
+                    {alum.school.includes('SFS') ? 'SFS 外交学院' : 'GRADUATE LEGACY'}
+                  </span>
+                  <h3 className="font-semibold text-slate-950 text-[15px] font-serif-zh tracking-tight flex items-baseline gap-1.5 flex-wrap">
+                    <span>{alum.name}</span>
+                    <span className="text-slate-400 font-mono text-[9px] lowercase font-normal tracking-tight">
+                      {alum.englishName}
                     </span>
-                    <h3 className="font-extrabold text-[#041E42] text-lg tracking-tight flex items-center gap-1.5">
-                      {alum.name}
-                      <span className="text-gray-400 font-mono text-[10px] font-normal tracking-normal lowercase">
-                        {alum.englishName}
-                      </span>
-                    </h3>
-                  </div>
-                  <div className="font-mono text-xs font-bold text-[#041E42] bg-slate-100 px-2 py-1 rounded">
-                    '{alum.year}
-                  </div>
+                  </h3>
                 </div>
+                <div className="font-mono text-[10px] font-semibold text-[#071426] bg-slate-100 px-2.5 py-1 rounded">
+                  '{alum.year}
+                </div>
+              </div>
 
-                {/* Role / Profession Badge */}
-                <div className="inline-flex items-center gap-1 py-1 px-2 rounded bg-amber-50 border border-amber-200/40 text-[11px] font-bold text-[#C5A059]">
-                  <Briefcase className="w-3.5 h-3.5" />
-                  <span>{alum.role}</span>
-                </div>
+              {/* Position/Career Role Badge */}
+              <div className="inline-flex items-center gap-1.5 py-1 px-2.5 rounded bg-[#FAF9F6] border border-[#C6A15B]/20 text-[11px] font-medium text-[#C6A15B]">
+                <Briefcase className="w-3.5 h-3.5" />
+                <span>{alum.role}</span>
+              </div>
 
-                {/* School Details */}
-                <div className="text-[11px] text-gray-400 font-mono leading-relaxed bg-slate-50 p-2.5 border-l-2 border-slate-300 rounded-r">
-                  <div><strong>Degree:</strong> {alum.degree}</div>
-                  <div className="mt-0.5 mt-px text-gray-500"><strong>School:</strong> {alum.school}</div>
-                </div>
+              {/* School Details */}
+              <div className="text-[11px] text-slate-400 font-mono leading-relaxed bg-[#FAF9F6]/40 p-3 border-l-2 border-[#C6A15B]/50 rounded-r">
+                <div><strong>Degree:</strong> {alum.degree}</div>
+                <div className="mt-1 text-slate-500"><strong>School:</strong> {alum.school}</div>
+              </div>
 
-                {/* Detail Paragraphs */}
-                <div className="space-y-2 text-xs leading-relaxed font-normal text-gray-600">
-                  <p className="border-t border-slate-100 pt-3 italic text-gray-500">
-                    "{alum.achievement}"
-                  </p>
-                  <p className="text-[#041E42] font-medium pt-1">
-                    {alum.chineseAchievement}
-                  </p>
-                </div>
+              {/* Detail Paragraphs */}
+              <div className="space-y-3.5 text-xs leading-relaxed font-normal text-slate-600">
+                <p className="border-t border-slate-100 pt-3.5 italic text-slate-400 text-[11px] leading-relaxed">
+                  "{alum.achievement}"
+                </p>
+                <p className="text-slate-800 font-medium">
+                  {alum.chineseAchievement}
+                </p>
               </div>
             </div>
 
-            {/* Bottom Card Border Accent wrapper */}
-            <div className="px-6 pb-6 pt-2 border-t border-slate-50 flex items-center justify-between text-[11px] text-gray-400">
-              <span className="flex items-center gap-1 font-mono uppercase text-[9px] font-semibold">
-                <Globe className="w-3 h-3 text-[#C5A059]" />
-                {alum.category === 'chinese' ? 'CHINA HUB CONNECT' : 'GLOBAL LEGACY'}
+            {/* Bottom Card Footer tag */}
+            <div className="mt-6 pt-3.5 border-t border-slate-50 flex items-center justify-between text-[10px] text-slate-400">
+              <span className="flex items-center gap-1 font-mono uppercase text-[8px] font-bold tracking-widest text-[#C6A15B]">
+                <Globe className="w-3 h-3" />
+                {alum.category === 'chinese' ? 'CHINA ACCESS HUB' : 'GLOBAL LEGACY'}
               </span>
-              <span className="text-gray-300 group-hover:text-[#C5A059] group-hover:translate-x-0.5 transition-all">
-                Hoya Legacy ↗
+              <span className="text-slate-400 group-hover:text-[#C6A15B] transition-colors duration-200">
+                Hoya Chronicle ↗
               </span>
             </div>
           </div>
         ))}
 
         {filteredAlumni.length === 0 && (
-          <div className="col-span-full text-center py-12 bg-slate-50 border rounded-2xl border-dashed">
-            <p className="text-gray-500 text-xs">没有找到符合搜索条件的杰出校友档案。</p>
+          <div className="col-span-full text-center py-16 bg-[#FAF9F6]/40 border rounded border-dashed border-slate-200">
+            <p className="text-slate-500 text-xs font-mono uppercase tracking-wider">No matching profiles found in CSSA archive.</p>
           </div>
         )}
       </div>
 
       {/* Premium Connection & Mentorship Panel */}
-      <div className="bg-[#041E42] text-white rounded-3xl border border-[#C5A059]/30 overflow-hidden shadow-xl mt-12">
+      <div className="bg-[#071426] text-white rounded border border-[#C6A15B]/25 overflow-hidden shadow-xl mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12">
           
-          <div className="lg:col-span-5 p-8 lg:p-12 space-y-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10">
+          <div className="lg:col-span-5 p-8 lg:p-12 space-y-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] text-[#C5A059] font-mono font-bold uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 text-[9px] text-[#C6A15B] font-mono uppercase tracking-[0.2em] font-semibold">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                 Hoya Professional Alliance
               </div>
-              <h3 className="text-2xl font-serif font-extrabold text-white tracking-tight leading-snug">
+              <h3 className="text-2xl font-light text-white tracking-tight leading-snug serif-display-zh">
                 常春藤美东校友联谊计划<br />
-                & 青年学生智库导师网
+                & 会员精英导师名录登记
               </h3>
-              <p className="text-gray-300 text-xs leading-relaxed font-normal">
-                为了协助在校的中国籍留学生解决实习红海、行业迷茫等关键痛点，GU CSSA 携手杰出毕业高管、驻美外交事务理事及华盛顿智库联合发起「Hoya 杰出校友领路人」辅导计划。
+              <p className="text-slate-300 text-xs leading-relaxed font-normal">
+                为深层赋能在美中国学者解决求职、科研、大局观认知的核心破局点，学联职业辅导部携手美东核心行业巨擘，共同发起领引人志愿计划。
               </p>
-              <ul className="text-gray-300 space-y-2 text-xs font-normal">
-                <li className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span><strong>一小时校友深度咖啡时间 (Coffee Chat)</strong>：一对一打破信息差</span>
+              <ul className="text-slate-300 space-y-3.5 text-xs font-normal">
+                <li className="flex items-start gap-2.5">
+                  <Award className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
+                  <span><strong>一小时校友深度咖啡辅导 (Coffee Chat)</strong>：一对一面对面解构信息差</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span><strong>名企简历直推 (Resume Book)</strong>：打通纽约与DC核心律所、智库与投行</span>
+                <li className="flex items-start gap-2.5">
+                  <Award className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
+                  <span><strong>精选简历入库直投 (Resume Book)</strong>：打通波士顿、特区与纽约合规要地</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span><strong>求职实战工作坊</strong>：模拟咨询 Case 与高规格行业论坛席位预约</span>
+                <li className="flex items-start gap-2.5">
+                  <Award className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
+                  <span><strong>行业求知前沿工作坊</strong>：模拟商业案例与最高规格智库代表席位预留</span>
                 </li>
               </ul>
             </div>
             
-            <div className="text-[10px] text-gray-400 font-mono tracking-wide uppercase border-t border-white/5 pt-4">
-              Georgetown CSSA Career Services Department
+            <div className="text-[9px] text-[#8690a6] font-mono tracking-[0.15em] uppercase border-t border-white/5 pt-4 font-semibold">
+              GU CSSA Career Services Division
             </div>
           </div>
 
-          <div className="lg:col-span-7 p-8 lg:p-12 bg-white/5">
-            <h4 className="font-bold text-sm text-[#C5A059] uppercase tracking-widest font-mono mb-4 text-center lg:text-left">
-              领航人计划 - 需求与简历入库登记
+          <div className="lg:col-span-7 p-8 lg:p-12 bg-white/3">
+            <h4 className="font-semibold text-xs text-[#C6A15B] uppercase tracking-[0.15em] font-mono mb-6 text-center lg:text-left">
+              领航员计划 - 个人诉求及简历存盘登记
             </h4>
             
             {mentorSubmitted ? (
-              <div id="mentor-success-alert" className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 text-center space-y-3.5 my-8">
-                <span className="text-2xl">🎉</span>
-                <h5 className="font-bold text-emerald-400 text-sm">登记递交成功！</h5>
-                <p className="text-gray-300 text-xs leading-relaxed font-normal max-w-sm mx-auto">
-                  职业发展部（Career Department）将在3至5个工作日内完成您乔大信箱的认证，并在本期导师名单下发时，通过校友库给您引荐对应行业方向的 Hoya 师兄师姐！
+              <div id="mentor-success-alert" className="bg-[#C6A15B]/10 border border-[#C6A15B]/30 rounded p-6.5 text-center space-y-4 my-8">
+                <span className="text-2xl">🏆</span>
+                <h5 className="font-semibold text-[#C6A15B] text-sm font-serif-zh">登记信息递交成功</h5>
+                <p className="text-slate-300 text-[12px] leading-relaxed font-normal max-w-sm mx-auto">
+                  学联职业发展部将在三个工作日内对您的 NetID 邮箱信息予以通关验证，并会在新一轮导师周开启时为您做精准的内推匹配与引介。请注意查收来邮！
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleMentorSubmit} className="space-y-4">
+              <form onSubmit={handleMentorSubmit} className="space-y-4 font-sans">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1 text-xs">
-                    <label className="text-gray-300 font-semibold block">中文姓名 / English *</label>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <label className="font-semibold block text-slate-200">姓名 (中文 / 英文拼音) *</label>
                     <input
                       type="text"
                       required
                       placeholder="例: 张小华 Xiaohua"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-white/10 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#C5A059] focus:bg-white/15 transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded px-3.5 py-2.5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#C6A15B] focus:bg-white/10 transition-colors"
                     />
                   </div>
-                  <div className="space-y-1 text-xs">
-                    <label className="text-gray-300 font-semibold block">乔大 NetID *</label>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <label className="font-semibold block text-slate-200">乔治城 NetID 邮箱前缀 *</label>
                     <input
                       type="text"
                       required
                       placeholder="例: xz123"
                       value={formData.netid}
                       onChange={(e) => setFormData({ ...formData, netid: e.target.value })}
-                      className="w-full bg-white/10 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#C5A059] lowercase focus:bg-white/15 transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded px-3.5 py-2.5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#C6A15B] lowercase focus:bg-white/10 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1 text-xs">
-                    <label className="text-gray-300 font-semibold block">在校攻读专业学院</label>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <label className="font-semibold block text-slate-200">所攻读学院与项目</label>
                     <input
                       type="text"
-                      placeholder="例: McDonough MSBA / SFS"
+                      placeholder="例: McCourt Public Policy / SFS"
                       value={formData.major}
                       onChange={(e) => setFormData({ ...formData, major: e.target.value })}
-                      className="w-full bg-white/10 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#C5A059] focus:bg-white/15 transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded px-3.5 py-2.5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#C6A15B] focus:bg-white/10 transition-colors"
                     />
                   </div>
-                  <div className="space-y-1 text-xs">
-                    <label className="text-gray-300 font-semibold block">期望引荐导师行业</label>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <label className="font-semibold block text-slate-200">意向辅导方向</label>
                     <select
                       value={formData.industry}
                       onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-[#C5A059] focus:bg-[#041E42] transition-all"
+                      className="w-full bg-white/5 border border-white/15 rounded px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-[#C6A15B] focus:bg-[#071426]"
                     >
-                      <option value="" className="text-gray-800">请选择职业期望方向...</option>
-                      <option value="diplomacy" className="text-gray-800">外交地缘政治 / 智库学术 (SFS preferred)</option>
-                      <option value="finance" className="text-gray-800">投行私募 / 金融管理 (MSB preferred)</option>
-                      <option value="tech" className="text-gray-800">量化科技 / 数据科学 (CS/Math preferred)</option>
-                      <option value="law" className="text-gray-800">国际争端法律 / 合规咨询 (GU Law preferred)</option>
+                      <option value="" className="text-gray-800">选择您的专业偏向...</option>
+                      <option value="diplomacy" className="text-gray-800">外交和公共政策 / 智库研究 (SFS)</option>
+                      <option value="finance" className="text-gray-800">投行及商业金融 (McDonough MSB)</option>
+                      <option value="tech" className="text-gray-800">量化金融与数据科学 (CS/Math)</option>
+                      <option value="law" className="text-gray-800">国际法与跨国争端合规 (GU Law center)</option>
                     </select>
                   </div>
                 </div>
 
-                <div className="space-y-1 text-xs">
-                  <label className="text-gray-300 font-semibold block">简单的个人经历陈述与瓶颈 (150字内)</label>
+                <div className="space-y-1.5 text-xs text-slate-300">
+                  <label className="font-semibold block text-slate-200">简述您的教育背景及当下瓶颈诉求 (150字以内)</label>
                   <textarea
-                    rows={2.5}
-                    placeholder="例如：目前大三，正在麦考特公共政策学院攻读。希望能引荐近期在华盛顿智库或亚太公共关系合规部门工作的华人师姐探讨简历改进..."
+                    rows={3}
+                    placeholder="例如：目前在大一攻读比较外交，面临大二选课和实习储备困惑。希望有一小时咖啡辅导，请教在华府公共组织工作的华人师兄简历过关指南..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-white/10 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#C5A059] focus:bg-white/15 transition-all resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded px-3.5 py-2.5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#C6A15B] focus:bg-white/10 transition-colors resize-none"
                   />
                 </div>
 
                 <div className="pt-2 flex justify-end">
                   <button
                     type="submit"
-                    className="flex items-center gap-2 px-6 py-3.5 bg-[#C5A059] hover:bg-[#d09930] text-gray-900 font-extrabold rounded-xl text-xs transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#C6A15B] hover:bg-[#d8b86a] text-[#071426] font-semibold rounded text-xs transition duration-200 cursor-pointer shadow-md"
                   >
-                    <span>提交简历并预约内推资格</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span>提交信息加入名录</span>
+                    <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </form>

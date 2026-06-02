@@ -1,6 +1,5 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
-import GucssaLogo from './GucssaLogo';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   setCurrentTab: (tab: string) => void;
@@ -22,63 +21,101 @@ export default function Hero({ setCurrentTab }: HeroProps) {
   };
 
   return (
-    <div className="relative h-screen flex flex-col items-center justify-between text-white overflow-hidden bg-[#041E42] mt-[-72px] md:mt-[-96px] pt-[72px] md:pt-[96px]">
-      
-      {/* Full-bleed high-end background image of Georgetown University */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <img
-          src="https://lh3.googleusercontent.com/d/1-2HoqkoAqu6GgSGW2f0y4yf6Qga7f6Gy"
-          alt="Georgetown Academic Healy Building"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center scale-105"
-        />
-        {/* Mockup matching deep Prussian blue gradient overlays */}
-        <div className="absolute inset-0 bg-[#041E42]/60 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#041E42] via-[#041E42]/50 to-[#041E42]/25" />
-      </div>
-
-      {/* Main hero showcase block pushed to bottom strictly according to user request */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8 pb-4 flex flex-col items-center justify-end flex-grow">
+    <div className="flex flex-col">
+      {/* 1. Cinematic Hero Frame */}
+      <div className="relative h-[82vh] min-h-[520px] flex items-center justify-center text-white overflow-hidden bg-[#071426]">
         
-        {/* Spacer to push content downwards to the bottom */}
-        <div className="flex-grow min-h-[40px] sm:min-h-[100px]" />
-
-        {/* Mockup exact text content with serif typography pairing - smaller size, closer to bottom, tighter tracking */}
-        <div className="space-y-1 max-w-none mx-auto mb-4 mt-auto">
-          <p className="text-[#C5A059] font-serif text-sm sm:text-base font-medium italic tracking-tight lowercase">
-            join the
-          </p>
-          <h2 className="text-[13px] xs:text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] tracking-tight font-medium text-white font-serif mx-auto leading-snug whitespace-nowrap">
-            Chinese Students and Scholars Association at Georgetown University
-          </h2>
+        {/* Full-bleed background image with precise vignette & micro-overlay */}
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
+          <img
+            src="https://lh3.googleusercontent.com/d/1-2HoqkoAqu6GgSGW2f0y4yf6Qga7f6Gy"
+            alt="Georgetown Academic Healy Building"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-center scale-102 filter brightness-[0.88]"
+          />
+          {/* Subtle multi-layer vignette and multiplication overlay (not a flat gray bar) */}
+          <div className="absolute inset-0 bg-[#071426]/50 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071426]/30 via-transparent to-[#071426]/30" />
         </div>
 
-        {/* Interactive Scroll Helper indicator */}
-        <button
-          onClick={handleScrollToContent}
-          className="flex flex-col items-center justify-center text-slate-400 hover:text-[#C5A059] transition-colors focus:outline-none cursor-pointer group pt-4"
-        >
-          <span className="text-[9px] font-mono tracking-widest text-slate-400 group-hover:text-[#C5A059] duration-300">
-            向下滚动探索 Explore
-          </span>
-          <ChevronDown className="w-4 h-4 mt-1.5 animate-bounce text-slate-400 group-hover:text-[#C5A059] duration-300" />
-        </button>
+        {/* Content Block: Ceremony details */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center h-full">
+          
+          <div className="space-y-4 max-w-4xl">
+            {/* Italic gold editorial label */}
+            <p className="text-hoya-gold font-serif text-lg sm:text-xl italic tracking-wide">
+              join the
+            </p>
+            
+            {/* Dual multilingual headings with strict block alignment */}
+            <div className="w-full max-w-[285px] xs:max-w-[340px] sm:max-w-[500px] md:max-w-[620px] lg:max-w-[720px] xl:max-w-[820px] mx-auto pt-2 select-none">
+              <h1 
+                className="w-full text-white serif-display-zh font-semibold text-[5.5vw] xs:text-[5.2vw] sm:text-[28px] md:text-[34px] lg:text-[40px] xl:text-[46px] leading-normal mb-1"
+                style={{ textAlign: 'justify', textAlignLast: 'justify' }}
+              >
+                乔治城大学中国学生学者联合会
+              </h1>
+              
+              <h2 
+                className="w-full text-slate-300 font-serif md:font-medium text-[1.9vw] xs:text-[1.7vw] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px] uppercase leading-none tracking-normal"
+                style={{ textAlign: 'justify', textAlignLast: 'justify' }}
+              >
+                Chinese Students and Scholars Association at Georgetown University
+              </h2>
+            </div>
 
+            <div className="w-12 h-[1px] bg-hoya-gold/50 mx-auto my-6" />
+
+            {/* Restrained elegant CTA row */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <button
+                onClick={() => setCurrentTab('guide')}
+                className="px-6 py-3 bg-hoya-gold hover:bg-[#d4ad64] text-[#071426] font-medium text-[13px] tracking-wider uppercase rounded transition-all-custom duration-300 shadow-md flex items-center gap-2 group cursor-pointer"
+              >
+                <span>阅读新生生存指南</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              
+              <button
+                onClick={handleScrollToContent}
+                className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 font-medium text-[13px] tracking-wider uppercase rounded transition-all-custom duration-300 cursor-pointer"
+              >
+                探索大本营服务
+              </button>
+            </div>
+          </div>
+
+          {/* Interactive Scroll Helper Indicator */}
+          <button
+            onClick={handleScrollToContent}
+            className="absolute bottom-6 flex flex-col items-center justify-center text-slate-400 hover:text-hoya-gold transition-colors focus:outline-none cursor-pointer group"
+          >
+            <span className="text-[9px] font-mono tracking-[0.25em] text-slate-400 group-hover:text-hoya-gold duration-300 uppercase">
+              向下滚动 Scroll
+            </span>
+            <ChevronDown className="w-4 h-4 mt-1.5 animate-bounce text-slate-400 group-hover:text-hoya-gold duration-300" />
+          </button>
+
+        </div>
       </div>
 
-      {/* Association Core Stats Section integrated inside a premium footer bar */}
-      <div className="relative z-10 w-full bg-[#041E42]/95 border-t border-white/5 backdrop-blur-md py-4 sm:py-6 px-4 md:px-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* 2. Association Official Stats Row directly below the cinematic hero */}
+      <div className="relative z-10 w-full bg-[#071426] border-y border-hoya-gold/20 backdrop-blur-md py-8 px-4 md:px-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="space-y-1">
-              <div className="text-xl md:text-2xl font-black text-[#C5A059] tracking-tight">{stat.count}</div>
-              <div className="text-slate-200 text-[10px] font-bold font-sans">{stat.label}</div>
-              <div className="text-[8px] text-gray-400 font-mono tracking-wide uppercase">{stat.enLabel}</div>
+            <div key={i} className="space-y-1 relative group">
+              {/* Vertical divider on desktop */}
+              {i > 0 && (
+                <span className="hidden md:block absolute left-0 top-[20%] bottom-[20%] w-[1px] bg-hoya-gold/20" />
+              )}
+              <div className="text-2xl md:text-3xl font-serif text-hoya-gold tracking-tight">{stat.count}</div>
+              <div className="text-slate-200 text-xs font-semibold serif-display-zh">{stat.label}</div>
+              <div className="text-[9px] text-slate-400 font-mono tracking-widest uppercase">{stat.enLabel}</div>
             </div>
           ))}
         </div>
       </div>
-
     </div>
   );
 }

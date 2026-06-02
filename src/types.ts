@@ -44,3 +44,16 @@ export interface ChatMessage {
   text: string;
   timestamp: string;
 }
+
+export interface AlumProfile {
+  name: string;
+  englishName: string;
+  degree: string;
+  year: string;
+  school: string;
+  role: string;
+  achievement: string;
+  chineseAchievement: string;
+  image: string;
+  category: 'notable' | 'chinese';
+}

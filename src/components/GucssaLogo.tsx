@@ -93,7 +93,7 @@ export default function GucssaLogo({ className = '', size = 56 }: GucssaLogoProp
 
         {/* Central Bi-disk centered ring */}
         <circle cx="200" cy="272" r="18" fill="currentColor" />
-        <circle cx="200" cy="272" r="6" fill="#041E42" />
+        <circle cx="200" cy="272" r="6" fill="#12213a" />
 
         {/* Hanging ornaments */}
         <path d="M110 148 L104 158 H112 Z" fill="currentColor" opacity="0.9" />

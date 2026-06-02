@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, CheckCircle, Circle, MapPin, School, ClipboardList, Info, HelpCircle, ArrowRight, Utensils, Home, Bus, CreditCard, Award, Calendar } from 'lucide-react';
+import { Search, CheckCircle, Circle, ClipboardList, Info, HelpCircle, ArrowRight, Utensils, Home, Bus, CreditCard, Award } from 'lucide-react';
 import { GuideSection } from '../types';
 
 export default function SurvivalGuide() {
@@ -31,14 +31,14 @@ export default function SurvivalGuide() {
   };
 
   const interactiveChecklistItems = [
-    { key: 'uid', label: '记下UID和激活NetID', sub: '8开头的9位数字, 初始化georgetown.edu邮箱' },
-    { key: 'duo', label: '绑定Duo App双重核验', sub: 'Georgetown强校验验证器, 登录统一网关必备' },
-    { key: 'immunization', label: '提交抗体/疫苗接种表 (SHC Form)', sub: '在 healthportal 上传, 否则锁选课账户 (Hold)' },
-    { key: 'physi_sim', label: '准备国内实体 SIM 卡面', sub: '中国大陆购买的 iPhone 无 eSIM 功能, 必须选择实体卡' },
-    { key: 'pnc_acct', label: '开立美国银行借记账户', sub: 'BOA M街旗舰店或 PNC 校园 ATM 现场办理' },
-    { key: 'gocard', label: '提前上传照片申领 GOCard', sub: '在校活动、打印机、图书馆、乘 GUTS 必备证件' },
-    { key: 'chinese_placement', label: '参加中文免修考试 (Placement)', sub: 'CAS学子有 Intermediate 第二外语要求, 及时免修' },
-    { key: 'speedqueen', label: '下载并配置 SpeedQueen 软件', sub: '学校洗衣房唯一软件通道, 每学期自动注入信用度值' },
+    { key: 'uid', label: '记下UID并激活NetID账户', sub: '学院八位数UID，初始化主校区@georgetown.edu邮箱' },
+    { key: 'duo', label: '绑定Duo Token双因子网关', sub: 'Georgetown核心校验验证器，登录统一系统必备' },
+    { key: 'immunization', label: '完成抗体疫苗接种表（SHC Form）', sub: '通过 healthportal 在线提交，必须避开选课Hold锁定' },
+    { key: 'physi_sim', label: '准备物理双卡槽 SIM 卡卡面', sub: '注意：中国大陆版 iPhone 不支持eSIM，请购买物理卡槽卡' },
+    { key: 'pnc_acct', label: '开立美国银行借记钱包账户', sub: '开学首日在PNC校园专柜、或BOA M街旗舰店凭电汇办理' },
+    { key: 'gocard', label: '提前上传正装照片申领 GOCard', sub: '校内班车乘坐、餐饮、图书馆自修及门锁验证的数字身份卡' },
+    { key: 'chinese_placement', label: '预约中文免修能力测试 (Placement)', sub: '文理学院等对二外有硬性指标。提前通过考试免去额外修读' },
+    { key: 'speedqueen', label: '安装 SpeedQueen 智能寝室洗烘', sub: '主校区寝室洗衣房核心软件，支持GOCard实时充值注入' },
   ];
 
   const guideData: GuideSection[] = [
@@ -50,33 +50,32 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'brief',
-          title: 'GUCSSA 简介与成员结构',
+          title: 'GUCSSA 简介与执委会结构',
           chineseTitle: 'GUCSSA Association Brief',
-          content: '乔治城大学中国学生学者联合会 (GUCSSA) 是乔治城大学官方注册、中国驻美大使馆官方认可的领袖级中国学生自治组织。我们下设活动、外联、宣传、职业发展、法务和财务六大职能部门。每年承办大华府（DMV）学界中秋迎新、使馆春节游园联合晚会、高端行业论坛和各大校友酒会。',
+          content: '乔治城大学中国学生学者联合会 (GUCSSA) 是乔治城大学官方正式注册、合法自制且受中国驻美大使馆认可赞助的华人学生组织。我们由常务、活动、外联、宣传、职业就业辅导、法务内控等多个职能部门骨干共同构成，每年深层协助本科生、研究生和交换学者平稳过渡华盛顿生活底色。',
           tips: [
-            '我们的核心领导班子：现任主席罗金悦 Lucy (jl3268@georgetown.edu)，副主席傅暄智 Jerry (xf97@georgetown.edu)。如有学术投诉、国际局涉外事务、迎新赞助需求请邮件联络。',
-            '官方微信搜一搜：「CSSAGU」或公众号「GU_CSSA」。获取每年最重要的行前说明群二维码！'
+            '执委会常务层：现任常务主席 George Qiao，常务副主席 Alex Chen。如有学术、法务紧急援助及华府事务合作，请径自发信。',
+            '官方指定资讯发布端：微信搜一搜「CSSAGU」或关注服务号「GU_CSSA」获取新生行前大群入口资质。'
           ]
         },
         {
           id: 'gu-stats',
-          title: '乔治城大学官方数据及趣闻',
+          title: '乔治城大学经典馆藏与华府掌故',
           chineseTitle: 'Classic Georgetown Quick Facts',
-          content: '建校于 1789 年 (美国宪法签署两年后)，由神父约翰·卡罗尔 (John Carroll) 创立，是美国历史最悠久的大学之一。主校区104英亩，紧临波托马克河，距离美国白宫仅 3.7 公里。下设 10 个核心学院（CAS、MSB商学院、SFS外交学院、Georgetown Law、McCourt公共政策学院等）。',
+          content: '乔治城大学创立于 1789 年 (美国联邦宪法签署的同年)，由约翰·卡罗尔神父创办。主校区（Healy Hill）坐落在高耸的峭壁上，俯瞰波托马克河。作为全美政要、外交、商贸精英的顶级摇篮，其享有“政治外交界哈佛”之卓著美誉。',
           tips: [
-            '核心录取数据：本科录取率仅 12%，校友在国会占有 28 个席位。商学院本科生的平均起薪高达 $100,733 USD。师生比维持在优越的 1:11。',
-            '校徽老鹰：鹰爪抓着代表理性知识的地球仪和代表信仰的十字架，象征学术与宗教共融 (Jesuit精神)。',
-            '吉祥物斗牛犬：Jack the Bulldog 已传承至第 6 代。校训为 "Utraque Unum"（合二为一），口号 "Hoya Saxa" 拉丁意思是“什么样的石头！”，戏谑指防护极强的石墙，后演变成加油呐喊口号。',
-            '驱魔人台阶 (Exorcist Steps)：校园东侧一处极窄极陡的 75 级石阶，为 1973 年同名恐怖电影坠楼处，如今是著名打卡点。'
+            '核心录取名录：全美著名最难录取的顶尖法学、外交学、商学院（MSB）。建校至今产出28位国会议员、多位国家最高元首。',
+            '吉祥物「Jack the Bulldog」：主校区活体传承斗牛犬已进入第六代。校训 “Utraque Unum” 的拉丁意为自勉的“合二为一”；应援高声呐喊口号 “Hoya Saxa” 意为“岩石般的意志”。',
+            '惊悚级地标「驱魔人台阶」：Healy 殿堂右翼幽长狭长的一行75级石阶，为1973年奥斯卡同名恐怖大片《驱魔人》的经典取景，至今为深夜跑山训练胜地。'
           ]
         },
         {
           id: 'geo-weather',
-          title: '地理位置与 DMV 都市圈气候',
+          title: '地理交通与大华府 DMV 气候特征',
           chineseTitle: 'Geographical Coordinates & DMV Weather',
-          content: '校区坐落于乔治城历史街区 (Georgetown Historic District)，保留大量18世纪维多利亚风格建筑。步行通达 M 街商圈。大都会区 DMV（D.C.、马里兰 MD、弗吉尼亚 VA 三地统称）共享轻轨、两轮和使馆资源。',
+          content: '校区直接置身于华盛顿具有深厚底蕴的乔治城历史街区。大华府 DMV 都市圈指：DC、弗吉尼亚州 (VA) 及马里兰州 (MD) 共同合围的都会轨道交通枢纽，通过发达的公交、使馆路网快速接驳。',
           tips: [
-            '气候概览：四季分明。夏季 (6-8月) 潮湿闷热，温度 28-35°C，防晒雨伞必备。秋季 (9-11月) 风景绝美十分爽朗，一件皮夹克和卫衣即可。冬季 (12-2月) 偶有大雪，可降至 -5°C 以下，建议国内备好轻便羽绒服、厚手套和靴子。春季 (3-5月) 气温回暖但多早晚凉，推崇洋葱式叠穿。'
+            '四季概况：DC 气温分界清晰。夏季(6-8月) 高温潮湿在28-35°C区间，强烈不建议午后曝晒；秋季(9-11月) 枫景如画、气温舒爽宜人；冬季(12-2月) 偶遇偶降暴雪，大衣羽绒服为行装标配。'
           ]
         }
       ]
@@ -89,52 +88,47 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'm-street',
-          title: 'M 街商圈基本指引',
+          title: 'M 街零售旗舰商圈全览',
           chineseTitle: 'M Street Retail District',
-          content: 'M Street 是乔治城乃至 DC 最繁华的消费步行街。距离校门步行不足 10 分钟。云集了 Apple Store、Lululemon、COS、Ralph Lauren 等一线时尚旗舰店。也是学生日常喝咖啡、逛书店（Barnes & Noble）的首选地段。',
+          content: 'M 街道是整个 D.C. 乃至美东最瞩目的高奢及设计师潮流零售步行街。距正校门仅不足10分钟步行，云集 Apple、Lululemon、COS、Ralph Lauren，亦是平日与教授 Coffee Chat、午后漫步的核心去处。',
           tips: [
-            '咖啡甜点：网红 Blue Bottle（蓝瓶子）、深受美国中产吹捧的 Levain 烘焙（极度扎实香浓的巧克力软曲奇）、以及 Tai Chi（太极功夫茶）奶茶餐厅皆在 M 街。',
-            '老石屋 (Old Stone House)：M 街上矗立着华盛顿最古老、仍然保留在原地基上的殖民地前建筑，免费开放参观。'
+            '甜品下午茶：打卡美国名产 Levain 极厚软曲奇、Blue Bottle 蓝瓶手工烘焙、以及 Tai Chi 华人茶饮店。',
+            '历史沉淀 “Old Stone House”：东端伫立着建于1765年的砖瓦小亭卡罗尔宅邸，它是美国首都第一栋完好保留本土原地基上的独立住宅古建筑，全天供人凭吊。'
           ]
         },
         {
           id: 'restaurants',
-          title: 'DMV 华人常去优质餐厅',
+          title: '大华府地区精致中韩美餐厅臻选',
           chineseTitle: 'Signature Dining Recommends',
-          content: 'DC 主城区中餐网点相对精简，但外围富饶的市郊（维州 Arlington、马大 Rockville）提供全方位家乡菜。',
+          content: '特区核心圈中餐偏于极简，但在近郊的维州 Arlington 和马里兰 Rockville 拥有最纯熟正宗的八大菜系、川菜、粤式早茶等聚集区。',
           tips: [
-            '**RPM Italian D.C.**：极具摩登都会格调的意式餐厅，精致的西式生和牛、龙虾意面。',
-            '**Bostan Uyghur Cuisine**：正宗新疆/维吾尔族大盘鸡、羊肉串，分量极其厚道。',
-            '**Jaleo by José Andrés**：DC 最著名的高端西班牙 Tapas 餐厅，果汁和海鲜饭闻名遐迩。',
-            '**Astoria D.C.**：国潮复古风川味小酒馆，花椒鸡、担担面绝不踩雷，鸡尾酒调酒水平业内拔尖。',
-            '**Thomas Sweet Georgetown**：柯林顿总统曾光顾的本地老牌手工冰淇淋店，支持混拌各类坚果碎。',
-            '**Il Canale**：拿坡里木柴窑烤正宗柴烧披萨，毗邻运河，户外雅座极具欧洲风情。'
+            '**RPM Italian D.C.**：现代都会奢雅风，龙虾手工意粉与西式生牛肉（Carpaccio）极受好评。',
+            '**Bostan Uyghur Cuisine**：地道新疆大盘鸡，现拉宽面搭配滋滋流油的炭烤羊肉串。',
+            '**Jaleo by José Andrés**：DC顶级米其林推荐西班牙 Tapas 殿堂，鹅肝多士与桑格利亚气泡酒首选。',
+            '**Astoria D.C.**：国潮酒吧兼高端川菜小馆，酸汤肥牛与调酒水准极高。',
+            '**Thomas Sweet Icecream**：三十年手工精磨乳酪，历任老华府高层出巡乔治城必然打卡的水底冰淇淋。'
           ]
         },
         {
           id: 'groceries',
-          title: '超市对比及选购常识 (大型超市 vs 亚洲中超)',
+          title: '生鲜超市对比与选购避坑指南',
           chineseTitle: 'Supermarkets & Asian Grocery',
-          content: '租房开灶必备知识。美国连锁巨头和亚洲生鲜网点分工明确：',
+          content: '在特区独立开伙需做好超市卡购买及价格认知定位，我们不推荐漫无目的地全额选购贵族超市：',
           tips: [
-            '**Target**：位于 Rosslyn 地铁站出口有一处直达，属于开架自助大型百货，价格平民。',
-            '**IKEA (宜家)**：订购床架、书桌和厨房全套的最佳极简首选，节假日物流常出现放鸽子，强烈建议工作日网订。',
-            '**中国超市大户 (大中华 Great Wall / 大华 99 Ranch / 好运来 Good Fortune)**：大量新鲜高山白菜、游水活鱼、中式火锅切片肥牛。主要盘踞在马里兰州 Rockville 一带，可以利用周末拼车一次性囤够两周分量。',
-            '**Safeway**：距离主校区最近的 Wisconsin Avenue 上有一家超大型 24 小时 Safeway。出示电子会员卡享受极致折扣，美式冷鲜肉和沙拉极全。',
-            '**CVS**：M 街和校园内部均有门店，属于开架药房兼便利店，可以购买各类扑热息痛、褪黑素并接种免费的季节性流感疫苗。'
+            '**Target**：Rosslyn 地铁出口有一家，主打实惠生活小家电、快消百货与平民纸巾。',
+            '**大华府亚洲中国超市大户 (大中华 Great Wall / 大华 99 Ranch)**：包含空运的时令山芋白菜、活鱼生猛海鲜、正宗火锅牛羊肥牛。建议周末校友拼车一次性完成采买。',
+            '**Safeway & Whole Foods**：邻近校区 Wisconsin 街上配有 Safeway，绑定免费数字会员可获极高折扣。Whole Foods 主打有机高等级牛排、冷切。'
           ]
         },
         {
           id: 'delivery',
-          title: '网购、生鲜网购与中文外卖 APP',
+          title: '在线生鲜与中文外卖送餐软件',
           chineseTitle: 'Online Marketplaces & Delivery',
-          content: '北美数字消费极度便利。掌握以下软件组合，可以大大提升寝室幸福指数：',
+          content: '留学生数字消费的合理组合，能大幅降低独居异国他乡的孤独感与烹饪时间损耗：',
           tips: [
-            '**Amazon Prime Student**：使用 georgetown.edu 邮箱注册即白送 6 个月免费极速快递会员。校内设有 Amazon Locker 专柜，收发包裹无需担心风吹日晒被盗。',
-            '**Yamibuy (亚米网)**：中国各省零食小吃（卫龙、螺蛳粉、日本化妆品）北美第一发货渠道，配有完善的中文在线客服。',
-            '**Weee! (亚裔生鲜第一平台)**：满 $49 包免邮直送家门口。水果极甜、肉质极棒。冷藏纸箱配送附带大量干冰，次日直达。',
-            '**熊猫外卖 (HungryPanda)**：全球最大的留学生中文点餐软件。DC 地区几乎所有老牌粤菜、川菜馆均有入驻，司机配有华人，沟通零阻碍。',
-            '**主流美式送餐：UberEats / DoorDash / GrubHub**：GrubHub 与学校有独家协议，甚至可以提前用学校餐饮额度进行食堂秒速点单取餐（Leo\'s Grab and Go）。'
+            '**Amazon Prime Student**：学校后缀邮箱注册，即享半年高规格免邮次日送达特权。',
+            '**Weee! 中文生鲜**：满 $49 包免邮直送寝室门口。时令生鲜、华人酱料与精品熟食俱全。',
+            '**熊猫外卖 (HungryPanda)**：DC 几乎100%华人菜系在此云集。全程配有华人送餐员，无惧语言卡壳。'
           ]
         }
       ]
@@ -147,35 +141,35 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'off-campus',
-          title: '校外推荐高安全性板块',
+          title: '校外高安全性热门居住板块',
           chineseTitle: 'Off-Campus Hotspots',
-          content: '乔治城附近不直接挨着大型地铁口，极力推荐寻找以下配有直达大学 GUTS 免费班车的区域：',
+          content: '主校区寸土寸金无直接地铁。极力推荐中国学者在以下拥有 GUTS 免费大巴秒速直通校车群的社区：',
           tips: [
-            '**Rosslyn (维州金融区)**：一桥之隔（Key Bridge）。多为美式现代化高端高层公寓。自带24小时大堂前台代收包裹、双重门禁和校车枢纽。工作日 GUTS 巴士 8 分钟单程一班直通校内，生活无忧。',
-            '**Glover Park**：校区以北，著名的宜居教工住宅区，治安在大华府名列前茅。多为经典砖瓦公寓，可乘 Glover Park 路线 GUTS bus 或 31/33 路公交上学。超市（Whole Foods、缺德舅）均在步行范围内。'
+            '**Rosslyn 楼群区域**：隔 Key Bridge 与学校对望。治安与金融极优，均为现代化轻高层重门禁公寓，自带前台代收贵重快递。清晨 5-8分钟即有一趟 GUTS 专班穿梭。',
+            '**Glover Park 高尚学区**：校园北翼教工首选。纯白古典瓦房、治安傲然，步行距离有高性价比有机生鲜超市，可搭乘 Glover 线校巴。'
           ]
         },
         {
           id: 'dorms',
-          title: '校内 5 栋大一新生楼全景剖析',
+          title: '主校区本科新生 5 栋经典大寝分析',
           chineseTitle: 'Freshmen Residence Halls Analysis',
-          content: '乔治城本科生被强制要求在校内住宿三年，新生会按照 Housing Portal 随机或自由匹配到以下 5 栋经典宿舍：',
+          content: '本科生常有三年强行留宿规章。所有学舍均为学校统一数字配额。以下为核心楼宇优缺比较：',
           tips: [
-            '**Copley Hall**：离学校正门 Healy Hall 最近的 6 层古典型宿舍。属于经典的 Suite（两间双人间共用一个中间洗手间和淋浴），G-4层男女混住，5层为全女生保护层。每层配有带烤箱的公用大厨房。',
-            '**Harbin Hall**：校园中西部地标。采用创新的 3 单元 Cluster 蜂巢式布局：每层楼分 3 个独立的小区块，每个小区块有 8 个房间共用一个大洗手间。社交气氛十分强、互动频繁。美国前总统比尔·克林顿大一曾经入住这里。',
-            '**New South**：临近 Leo\'s 核心食堂。特色是卧室自带独立的冷热水洗手池，传统长走廊布局。4层高精尖建筑，地热系统非常足，楼下配有完备的自习讨论区。',
-            '**Darnall Hall**：主攻校区北门，紧邻 MedStar 医院和 Epicurean 食堂。标准双人间加每层纯单性别大浴室，极其便利，对生活隐私度强的学子十分便利。',
-            '**Reynolds Hall**：Southwest Quad 三杰大群落之一。内含高年级与新生，套房布局极具现代美感。地下一层配有知名的大型 Reynolds Library、独立的音乐练琴室、以及学生自助零食铺 (Hoya Snaxa)。'
+            '**Copley Hall**：最邻近前门 Healy 地标，标准的 Suite 型套房（独立起居卫浴两寝共用），自带烤箱厨房。',
+            '**Harbin Hall**：标志性蜂巢布局复式楼。极具华府凝聚感，美国前总统克林顿在修读常青藤预科时大一曾经入住。',
+            '**New South**：直临核心中央食堂。卧室自带洗手池池体，供暖与水流条件极其硬核。',
+            '**Darnall Hall**：主攻北门合围区。配备大一新生专用标准双人单床配置加全性别公共整洁大卫浴，保障隐私。',
+            '**Reynolds Hall**：现代美学之巅，属于 Southwest Quad 三雄大社区，地下一层拥有 Reynold 馆藏、琴室及自制美食售点。'
           ]
         },
         {
           id: 'dorm-systems',
-          title: '寝室高尖端智能终端配套 (SpeedQueen/Switch Tech)',
+          title: '公寓硬件智能配套 (Switch / SpeedQueen)',
           chineseTitle: 'Dorm Intelligences & Apps',
-          content: '乔治城已经彻底告别了落后的金属物理钥匙时代，宿舍全面应用高尖端互联终端：',
+          content: '近年来乔治城已升级了全部物理电子硬件基础。请提前在手机端完成以下应用之挂接激活：',
           tips: [
-            '**Switch Tech 蓝牙智能门锁**：学校所有核心公寓均内含新型无线蓝牙电控锁芯。无需实体钥匙，只需将 iPhone 下载关联 “Switch Tech” 客户端，激活后将手机正面触碰门锁传感器，即可一秒发出清脆的开锁指令！',
-            '**SpeedQueen 自助洗烘互联**：所有寝室洗衣房由 SpeedQueen 统一承接，内含高精度重量感应和速洁选项。可以通过 APP 随时监控当前的排队与烘干倒计时。每学期学校账户（GOCard）会自动往里面注入免费信用度。'
+            '**Switch Tech 手机蓝牙智能电门锁**：学校全面废除物理长铜匙。只需将 iPhone 或安卓开启 Switch 芯片，靠近把手位置即可一秒瞬间感应指令解码。',
+            '**SpeedQueen 自助洗衣监控**：洗衣房统一承接大厂。不仅支持APP端查询每台洗干机运转及烘干倒计时状态，每学期更有学校专项自动注入账户。'
           ]
         }
       ]
@@ -188,36 +182,33 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'guts-bus',
-          title: 'GUTS (Georgetown University Transportation Shuttle)',
+          title: 'GUTS (乔治城官方免费接送穿梭巴士系统)',
           chineseTitle: 'Official Free Shuttle Routes',
-          content: 'GUTS 巴士是学校官方营运的免费公共校巴接驳群，任何拥有 GOCard 的学生及随行访客均可无限次免费搭乘，上车无需刷卡校验！最常用的始发地点为校区地下的 BTA (Bus Turnaround) 环形车场以及星巴克外的 Lombardi Circle。',
+          content: 'GUTS 巴士是学校为了便利师生、解决不挨地铁的特色免费大巴车。在星巴克环岛和BTA地下车场有专属终点。上车无需看NetID或刷卡，极为好客。',
           tips: [
-            '**Arlington Shuttle**：前往维吉尼亚州商圈。',
-            '**Rosslyn Shuttle**：最核心的通勤线。发车频率最高，5-8分钟直达。',
-            '**Dupont Circle Shuttle**：通勤至 DC 核心红线地铁圈。',
-            '**Union Station Loop / Capitol Campus**：服务于常驻国会山校区、法学院的高年级研究生学者。',
-            '**55 H Street Weekend Shuttle**：专供周末出行、跨校科研、大型采购购物的最佳线路。'
+            '**Rosslyn Shuttle**：发车最频急，5分钟通勤至维州地铁大底盘。',
+            '**Dupont Circle Line**：一站式通达DC红线老牌使馆文化特区。',
+            '**Capitols 联合会专线**：方便法学中心、常驻国会山研究院的学者在不同学术区流转。'
           ]
         },
         {
           id: 'metro-apps',
-          title: '大都市轻轨系统与 SmarTrip 公交卡',
+          title: '华府地铁系统与 Apple 电子公交卡 (SmarTrip)',
           chineseTitle: 'Metro Transit & Apple Wallet SmarTrip',
-          content: '华盛顿轻轨（DC Metro）是全美最整洁高效的轨交系统之一，直接贯穿大华府核心商圈及机场。',
+          content: '华盛顿拥有明净且守时规整的特区地下快铁（WMATA Line），是日常探访史密森尼博物馆、国会山、使馆区的首席通勤选择。',
           tips: [
-            '**SmarTrip 在线电子充值**：无需再购买零散的塑料实体卡。只需在 iPhone 的 Apple Wallet（钱包）选择添加 “SmarTrip” 新建电子公交卡，绑定借记卡充入 $10-$20刀，即可像国内乘地铁、公交巴士那样，秒级挥机一刷即过，同时在各大轻轨站换乘本地 Metrobus 接驳巴士可享受换乘优惠。',
-            '**地铁换乘注意**：乔治城大学本岛没有直接的地铁站，最常用出行节点为：Rosslyn 站（Orange / Blue / Silver 三线）、Dupont Circle 战（Red 核心红线）。由于多以距离定价，刷卡进站及出站时均需要贴机验证。'
+            '**Apple 钱包 SmarTrip 挂接**：无需到柜台排队买卡，在 iPhone 钱包直选「交通卡-新增-华盛顿 SmarTrip」充值即可通过，享有轻轨与 DC Circulator 红蓝巴士无缝超低折扣。'
           ]
         },
         {
           id: 'airports',
-          title: '三大主力机场通达全景攻略',
+          title: '大华府三大都会机场抵校路线比对',
           chineseTitle: 'D.C. Airport Transportation Guides',
-          content: '大华府都市圈由三大骨干国际/国内民航机场环抱，其对中转回国、大一接机等有根本性差别：',
+          content: 'DMV 内含三大门户机场，中港台学者飞美选线各异：',
           tips: [
-            '**IAD (Dulles International Airport) 华盛顿杜勒斯国际机场**：大多数留学生回国、返美的首选。国际各大旗舰航司主力重仓机场。如今通达性极佳：可从主航站楼直接搭乘 Metro Silver Line 灰色地铁，一路闭眼坐到 Rosslyn 站，换乘免费 GUTS 校巴，全程零堵车仅消耗约 $6 刀即可安全抵校！拼车打车（Uber / Lyft）一般需要 $50-$70刀。',
-            '**DCA (Ronald Reagan National Airport) 罗纳德·里根国家机场**：属于城中次枢纽，主攻美国国内线和加拿大航线。距离乔大极其近。乘坐地铁 Yellow / Blue 线可以 15 分钟切入中国城，乘坐 Uber 出发到校通常耗费仅 $15-$20 刀。',
-            '**BWI (Baltimore/Washington Airport) 巴尔的摩机场**：属于廉价航司、捷蓝或西南航空的重镇，距离市中心极远。前往需要去 Union Station 换乘火车（AMTRAK / MARC 铁路线），打车直达需预备 $75+ 刀神话级别高资费。'
+            '**IAD 杜勒斯国际机场**：中转回国主力。目前最便捷线路是：主航站台直插 Silver 灰线地铁，直通 Rosslyn 站乘 GUTS 免费校车，全程耗费不超过 $6 美元即可通达 Healy 礼堂前！拼车约需 $60+ 刀。',
+            '**DCA 里根国家机场**：主城区核心机场，供国内线考察，打车仅 15 分钟切入乔治城。',
+            '**BWI 巴尔的摩机场**：极远、廉航主港。需要倒乘马里兰火车，中转繁复度高，非特需不推荐在此落地。'
           ]
         }
       ]
@@ -230,33 +221,33 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'banking',
-          title: '美国两大行开户避坑与线上便捷转账',
+          title: '美国商业大行开户细节与瞬时到账 Zelle',
           chineseTitle: 'Opening US Bank Account & Transfer',
-          content: '抵校第一个工作日务必带齐重要纸质原件完成本地银行账户办理。借记卡（Debit Card）通常在一到两周内安全邮寄至你的美国地址。',
+          content: '携护照原件、GU I-20 文件及学校注册证明赴商业大厅办理，两周内首张借记卡 Debit Card 将直寄学社。',
           tips: [
-            '**PNC Bank on Campus**：乔大唯一的独家联盟银行。在 O\'Donovan（Leo\'s）食堂上方配有完备实体网点。持有 GOCard 办理 PNC Student Wallet 零月费福利，ATM布满全校。',
-            '**Bank of America (BOA) / Chase**：在 Georgetown M 街 1200 街区及附近高档商圈均配有大型双层豪华旗舰店。手机 APP 指合程度好用，大额转入快捷，首推 BOA 作为存入爸妈国内电汇外汇的主要重仓卡。',
-            '**Zelle & Venmo 极速结算**：美国人转账账单拆分唯一指定工具 “Zelle”：只需在各大银行 APP 直接搜索，通过学生 georgetown 邮箱即可一秒绑定，转账秒级到账，无需承担任何转账手续费！“Venmo” 属于中式微信钱包概念，深受留学生的极爱，可自由转存。'
+            '**PNC Bank 独家联动**：在 Leo 食堂正上方有专设机构。凭 GOCard 办理 Student Checking 账户享全免小额月度维护费。',
+            '**Bank of America (BOA) & Chase**：M大街中段配有极高阶多语服务大厅。APP转账逻辑极为贴合用户。',
+            '**Zelle 免手续费瞬时清算**：各家大行 APP 内嵌，无需下载任何额外客户端。通过绑定 georgetown 邮箱，转账可在数秒内完成汇划清算。'
           ]
         },
         {
           id: 'simcards',
-          title: '手机卡办理避坑：实体大厂 vs 便宜 MVNO 虚拟运营商',
+          title: '行货 iPhone 无卡 eSIM 避坑与精明手机运营商',
           chineseTitle: 'US Mobile SIM Cards Detail Guides',
-          content: '通讯是生活保障。由于手机芯片规格迥然不同，中国大陆行货 iPhone 用户必须牢记：',
+          content: '解决赴美通讯时，需要密切体察手机物理性质。不当的选择可能会造成极高额外开支：',
           tips: [
-            '**国行 iPhone 零 eSIM 警告**：国行行货 iPhone 没有任何无卡物理 eSIM 的支持架构。当你在 Mint Mobile、Verizon 官网办理或者咨询时，一定要强行选择 “Request Physical SIM Card”（申请寄送实体塑料卡面），否则对方下发扫码二维码，你的中国手机将完美无法识别！',
-            '**虚拟运营商 (Mint Mobile / Visible)**：首推 **Mint Mobile**（租用 T-Mobile 基站线路）或 **Visible**（租用 Verizon 巨头基站）。月租仅需 $15-$25 刀即可享受高达 15GB 及以上的完全 5G 不限速大流量包，国内通过淘宝买一张临时测试卡，到美后随时官网申请转移到期，费用比 AT&T $60 多刀基础套餐划算近 3 倍以上。'
+            '**行货实体双卡警告**：中国行货 iPhone 出厂**不具备**任何无卡物理 eSIM 的识别机制。订购 Mint、Visible 或 AT&T 时应在后台强选「Request Physical SIM Card (请求实体卡)」，不然将会因芯片不匹配而无法拨通报警。',
+            '**高性价比 Mint Mobile / Visible**：推荐租用主力运营商基站的廉价运营商。月费仅 $15-$25 即可畅享顶限 5G 流量。'
           ]
         },
         {
           id: 'insurance',
-          title: '乔治城高抗体医疗保险Premier计划详解',
+          title: '校园高等级医疗保险 Premier 计划必读',
           chineseTitle: 'Georgetown Premier Health Insurance Rules',
-          content: '美国的医疗费用堪称没有封顶，无保险状态下看一次普通感冒发烧可能需要预备成百上千美元的门诊账单！乔治城规定所有注册在案的学生必须在选课生效前强力交清医疗险费用。',
+          content: '美国医疗资费极度高昂。选课通过前，系统自动预扣强制保险费。',
           tips: [
-            '**GU Premier Plan**：全年在校总额保险费用约为 $3,430 美元。涵盖 MedStar 医院绝大多数专科门诊、常规住院、特设精神科干预、以及在 Student Health Center（健康中心）的药物处方免全额垫付项目。推荐直接使用学校官方险种，通过外部野鸡险中介进行 Waiver (放弃豁免) 极易遭遇学校不予审核，发生病痛无法保障。',
-            '**基础牙医与眼睛盲区**：校内强制基本险**100%不覆盖**洗牙、补牙、框架眼镜配置、以及隐形眼镜验光！在美国看一次牙医没有二级险种需要高额自负，强烈建议在飞美上飞机前，在国内正规口腔医院做完洗牙及牙病清理，并在国内配齐两副完全高硬度的近视眼镜一并空运过来。'
+            '**GU Premier 险种**：年度资费约为 $3,430 美金，全面报销 MedStar 附设各级门诊与Student Health Center。建议绝大多数新生不要擅自 Waiver 以防遭遇由于信息漏审而无法承担华盛顿看诊的窘境。',
+            '**牙医与眼科盲区**：基本学校保单**100%不配发**常规洗牙、隐形框架等项目。建议赴美前在国内进行洗牙并在国内配好两副高强度眼镜带来。'
           ]
         }
       ]
@@ -269,35 +260,31 @@ export default function SurvivalGuide() {
       subsections: [
         {
           id: 'academic-tools',
-          title: '选课三大神级神器与 Canvas 线上教研室',
+          title: '选课测评 RateMyProfessors 与 Coursicle 交互排表',
           chineseTitle: 'Course Selection Apps & Canvas Portal',
-          content: '学术选课是乔大生活的半壁江山。合理利用以下软件组合，可以帮你轻松规避学术杀手必修课：',
+          content: '极快合理搭建学术课表，是高分绩点 GPA 及课业通顺的半壁江山：',
           tips: [
-            '**GU Experience**：正式的大学选课、打印成绩单。',
-            '**Rate My Professors (RMP)**：属于高纯度教授打分黑红榜。可以查询乔大过往三年任何教授的给分松紧度（Easy A 指数）、每节课的阅读页码任务量、以及期末是否有巨额 Exam。',
-            '**Coursicle**：高颜值自备学术排表辅助排课神器。支持直接输入课程代码进行可视化色块防时间冲突排课演练。',
-            '**Duo Double-Factor App**：学校电脑网关唯一的验证门神，请勿随意卸载或恢复手机物理出厂设置，否则每次验证都需要致电学校 IT 报备。'
+            '**Rate My Professors (RMP) 给分评价**：北美最大测评黑红榜，细致透露各个教授的阅读量、Easy A 指数与考查频率。',
+            '**Coursicle 可视化工具**：在选课系统开放前，供您预录代码进行重合校验。'
           ]
         },
         {
           id: 'language-placement',
-          title: '乔治城文理学院、商学院等第二外语免修考试 (Chinese Placement)',
+          title: '文理、外交学院第二外语免修考试（Placement）',
           chineseTitle: 'School Language Requirements & General Exams',
-          content: '第二外语免修考试是针对国际新生的独门学分救星，通过中文免修可以让你足足节省近 6-12 个昂贵的选课学分：',
+          content: '第二外语免修是华人新生的隐形学分重镇。一节高阶外语课能帮您直接节省上万刀的昂贵学资学利：',
           tips: [
-            '**College of Arts & Sciences (CAS 文理学院)**：所有文理学院学子强制有 Intermediate 级别的第二外语学业指标，没有通过免修的中国学子甚至被迫去零基础学习法语或日语。不要慌！在开学第一天立即前往官网申请 **Chinese Placement Exam**。通过线上答题阅卷、再加 Zoom 一次 15 分钟的外语系教授口语对话，即可完美免去整个第二外语要求！',
-            '**SFS 外交学院**：对外语指标有北美顶流的严求！必须通过极其高端的 Foreign Service Language Proficiency 闭卷多方位评估，需要提前做好大一的选课储备。',
-            '**MSB 商学院及 SON/SOH 护理学院**：对普通的本科通识及护理硕士不需要强制具备第二外语免修手续，除了特定的 Global Health 跨国研究专长项目。'
+            '**文理学院 (CAS二外)**：强行保留中级外文考核。新生抵校的第一周即可申请 Chinese Placement Exam 预约。通过线上多选答卷外加 Zoom 下中文系教授的一对一简易口头叙话，几分钟即可顺利拿到“完全二外豁免豁免学分”！'
           ]
         },
         {
           id: 'opt-cpt',
-          title: 'CPT 与 OPT 国际生合法实习许可红线政策',
+          title: 'F-1 国际生 CPT / OPT 带薪实践实习核心红线',
           chineseTitle: 'F-1 Visa CPT/OPT Application Guides',
-          content: 'F-1 国际生在美国合法出任带薪实习的唯一保障，由 OGS（学校国际学生办公室）主管注册和 I-20 信息签发：',
+          content: '在校期间在校外开展商业行为的最高凭证。由学校国际办公室处 OGS 批准，并变更 I-20 条例字段：',
           tips: [
-            '**CPT (课程实习许可)**：在校期间在校外带薪或无薪兼职的基石。申请前学校硬规定必须已经在校内学满 1 个完整的学术学年。CPT 必须证明其工作内容与你的专业紧密挂钩，需要系里出具学分绑定书。**绝不能**在未拿到正式签字的新 CPT I-20 文件前提前去公司上班，否则直接导致 F-1 签证失效！',
-            '**OPT (毕业实习许可)**：毕业前后可在全美工作 12 个月的超级特权令牌！理工科（STEM 指定专业，如乔大电脑科学、量化数学、生物金融）有额外延期 24 个月的绿灯特权（总共达 3 年合法工作缓冲）。需要在计划毕业日的前 90 天开始在线向移民局递交 I-765 表格申领 EAD 卡。'
+            '**CPT (课程学分实习许可)**：须在校修满一整个官方学术学年才可触发。CPT 期间工作性质必须严求与本学位专修方向息息相关，在拿到包含新 CPT 盖章的 I-20 前千万不可开工以免面临身份失效重办遣返之罚。',
+            '**OPT (毕业工作实践特许)**：可在美合法开展实习达12个月（STEM 如量化、CS、生物等享有额外24个月，总达3年），毕业日前90天应向 USCIS 提出申领。'
           ]
         }
       ]
@@ -324,44 +311,44 @@ export default function SurvivalGuide() {
   const displayCategory = searchQuery ? filteredGuide[0] : activeCategory;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
       
-      {/* Search Header Banner - Elegant minimalistic Slate aesthetic */}
-      <div className="bg-[#041E42] rounded-3xl p-8 lg:p-12 text-white shadow-xl relative overflow-hidden border-b-4 border-[#C5A059] mb-12">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 blur-2xl rounded-full translate-x-12 -translate-y-12" />
+      {/* Search Header Banner - Elegant minimalistic Slate card */}
+      <div className="bg-[#071426] rounded-lg p-8 lg:p-12 text-white relative overflow-hidden border border-[#C6A15B]/20 mb-14">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 blur-3xl rounded-full translate-x-12 -translate-y-12" />
         <div className="relative z-10 max-w-3xl">
-          <span className="text-[#C5A059] font-mono text-xs font-bold uppercase tracking-widest block mb-2">
+          <span className="text-[#C6A15B] font-mono text-[9px] font-bold uppercase tracking-[0.25em] block mb-2">
             GEORGETOWN UNIVERSITY CSSA SURVIVAL INTEL
           </span>
-          <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-wide mb-4 text-slate-100">
-            乔治城大学官方新生生活指南 (2025/2026 最新版)
+          <h2 className="text-3xl font-light tracking-tight mb-4 text-slate-100 leading-tight serif-display-zh">
+            乔治城新生生存指南及通关大名集
           </h2>
-          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-sans">
-            本指南完全参考 GUCSSA 官方印发的行前红宝书进行交互定制：涵盖重要文书疫苗 checklist、M街及DC餐馆指南、5大新生宿舍全剖析、SpeedQueen智能蓝牙Switch锁指引、PNC银行开卡、GUTS班车线路、Duo认证及 Placement 中文免修等保姆级学术及日常攻略。
+          <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-6 font-sans">
+            本指南根据 GUCSSA 历任执委会印发的官方行前攻略与老生生活集锦精心提炼。它包罗疫苗接种Hold解锁、PNC柜合开户、GUTS免费巴士班表、SpeedQueen及蓝牙蓝牙密码锁锁芯校验、M街与大华府餐飨避坑及 Placement 考试全流程。
           </p>
           
           {/* Dynamic Guide Search */}
-          <div className="relative max-w-lg shadow-2xl">
-            <Search className="absolute left-4 top-1/2 -convert-y -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <div className="relative max-w-lg shadow-sm">
+            <Search className="absolute left-4 top-1/2 -convert-y -translate-y-1/2 text-slate-400 w-4 h-4" />
             <input
               type="text"
               id="guide-search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="搜索任何生存指南（例：宿舍、PNC、Duo、GUTS、M街）..."
-              className="w-full pl-11 pr-4 py-3 bg-white/10 hover:bg-white/15 focus:bg-white text-white focus:text-gray-900 border border-white/20 focus:border-white rounded-xl text-xs placeholder-gray-400 focus:outline-none transition-all duration-300"
+              placeholder="搜索任何指南关键词（例如：宿舍、PNC、Duo、GUTS、M街、eSIM）..."
+              className="w-full pl-11 pr-4 py-3 bg-white/10 hover:bg-white/15 focus:bg-white text-white focus:text-gray-900 border border-white/10 focus:border-white rounded text-xs placeholder-slate-400 focus:outline-none transition-all duration-300"
             />
           </div>
         </div>
       </div>
 
       {/* Guide Main Columns layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
         {/* Left column / Top Grid: Navigation Tabs & Progress Tracker */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white border border-slate-100/80 rounded-2xl p-4.5 shadow-sm space-y-3">
-            <h3 className="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-[#C5A059] px-2 mb-1">
+          <div className="bg-white border border-[#08142c]/8 rounded p-5 space-y-4">
+            <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#C6A15B] px-1 mb-1">
               GUIDE DIRECTORY / 目录索引
             </h3>
             
@@ -377,29 +364,21 @@ export default function SurvivalGuide() {
                       setActiveCategoryId(category.id);
                       setActiveSubId('');
                     }}
-                    className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-left transition-all duration-300 group outline-none cursor-pointer ${
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded text-left transition-all duration-200 group outline-none cursor-pointer border ${
                       isActive
-                        ? 'bg-[#041E42] text-white border-l-4 border-[#C5A059] shadow-md shadow-[#041E42]/5'
-                        : 'bg-transparent text-gray-600 hover:text-gray-900 hover:bg-slate-50'
+                        ? 'bg-[#071426] text-white border-hoya-gold/50 shadow-sm'
+                        : 'bg-transparent text-slate-600 hover:text-gray-900 hover:bg-slate-50 border-transparent'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <div className={`p-1.5 rounded-lg transition-colors ${isActive ? 'bg-white/10 text-[#C5A059]' : 'bg-slate-50 text-slate-400 group-hover:bg-slate-100'}`}>
-                        {category.icon === 'ClipboardList' && <ClipboardList className="w-3.5 h-3.5" />}
-                        {category.icon === 'Utensils' && <Utensils className="w-3.5 h-3.5" />}
-                        {category.icon === 'Home' && <Home className="w-3.5 h-3.5" />}
-                        {category.icon === 'Bus' && <Bus className="w-3.5 h-3.5" />}
-                        {category.icon === 'CreditCard' && <CreditCard className="w-3.5 h-3.5" />}
-                        {category.icon === 'Award' && <Award className="w-3.5 h-3.5" />}
-                      </div>
+                    <div className="flex items-center gap-3">
                       <div className="space-y-0.5">
-                        <div className="text-xs font-bold font-sans">{category.title}</div>
+                        <div className="text-[13px] font-medium serif-display-zh">{category.title}</div>
                         <div className={`text-[8px] font-mono uppercase tracking-wider ${isActive ? 'text-slate-300' : 'text-slate-400'}`}>
                           {category.chineseTitle}
                         </div>
                       </div>
                     </div>
-                    <ArrowRight className={`w-3 h-3 transition-transform ${isActive ? 'text-[#C5A059] translate-x-1' : 'text-slate-300 group-hover:translate-x-0.5'}`} />
+                    <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isActive ? 'text-[#C6A15B] translate-x-1' : 'text-slate-300 group-hover:translate-x-0.5'}`} />
                   </button>
                 );
               })}
@@ -407,18 +386,15 @@ export default function SurvivalGuide() {
           </div>
 
           {/* Interactive Checkbox Widget Panel - Premium UI Tracker */}
-          <div className="bg-[#FAFBFD] border border-slate-200/50 rounded-2xl p-5 shadow-inner space-y-4">
-            <div className="flex items-center gap-3 border-b border-slate-200/50 pb-3">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                <CheckCircle className="w-4.5 h-4.5" />
-              </div>
+          <div className="bg-[#FAF9F6] border border-[#08142c]/6 rounded p-6 space-y-4">
+            <div className="flex items-center gap-3 border-b border-[#08142c]/6 pb-3">
               <div>
-                <h4 className="text-xs font-bold text-[#041E42] tracking-tight">留学生入境通关及到校清单</h4>
-                <p className="text-[8px] text-slate-400 font-mono tracking-widest uppercase">Progress Tracker</p>
+                <h4 className="text-xs font-semibold text-[#071426] tracking-tight font-serif-zh">宿合到校及入境合规登记单</h4>
+                <p className="text-[8px] text-[#667085] font-mono tracking-widest uppercase">Official Registration Tracker</p>
               </div>
             </div>
 
-            <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
+            <div className="space-y-3.5 max-h-80 overflow-y-auto pr-1">
               {interactiveChecklistItems.map((item) => {
                 const isDone = checklist[item.key] || false;
                 return (
@@ -426,49 +402,49 @@ export default function SurvivalGuide() {
                     key={item.key}
                     id={`guide-check-${item.key}`}
                     onClick={() => toggleChecklist(item.key)}
-                    className="w-full text-left flex items-start gap-2.5 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-100 transition-all group cursor-pointer"
+                    className="w-full text-left flex items-start gap-3 p-1.5 rounded hover:bg-white transition-all group cursor-pointer"
                   >
-                    <div className="mt-0.5 text-slate-300 group-hover:text-emerald-500 transition-colors flex-shrink-0">
+                    <div className="mt-0.5 text-slate-300 group-hover:text-[#C6A15B] transition-colors flex-shrink-0">
                       {isDone ? (
-                        <CheckCircle className="w-4 h-4 text-emerald-500 fill-emerald-500/10" />
+                        <CheckCircle className="w-4 h-4 text-[#C6A15B]" />
                       ) : (
                         <Circle className="w-4 h-4" />
                       )}
                     </div>
                     <div>
-                      <div className={`text-[11px] font-semibold leading-tight flex items-center gap-1.5 ${isDone ? 'line-through text-slate-400' : 'text-slate-700'}`}>
+                      <div className={`text-[12px] font-medium leading-normal ${isDone ? 'line-through text-slate-400' : 'text-slate-800'}`}>
                         {item.label}
                       </div>
-                      <div className="text-[8px] text-slate-400 leading-normal mt-0.5">{item.sub}</div>
+                      <div className="text-[9px] text-[#667085] leading-relaxed mt-0.5">{item.sub}</div>
                     </div>
                   </button>
                 );
               })}
             </div>
 
-            <div className="bg-[#041E42] text-white p-3 rounded-xl flex items-center justify-between text-[10px] font-mono tracking-wider">
-              <span>完成进度 PROGRESS:</span>
-              <span className="font-bold text-[#C5A059]">
+            <div className="bg-[#071426] text-white p-3.5 rounded text-[10px] font-mono tracking-wider flex items-center justify-between">
+              <span>PROGRESS / 完成度:</span>
+              <span className="font-bold text-[#C6A15B]">
                 {Object.values(checklist).filter(Boolean).length} / {interactiveChecklistItems.length}
               </span>
             </div>
           </div>
 
           {/* Guide Credits - Premium Minimalist Badge */}
-          <div className="bg-white border border-slate-100 p-4.5 rounded-2xl text-center">
-            <p className="text-[10px] text-slate-400 font-mono tracking-wider uppercase">GUCSSA Guide Credits</p>
-            <div className="grid grid-cols-3 gap-2 mt-3 select-none text-[10px] font-sans">
-              <div className="p-1 px-1.5 bg-slate-50 border border-slate-100 rounded">
-                <div className="text-slate-400">内容撰写</div>
-                <div className="font-bold text-slate-700">Amber / Max</div>
+          <div className="bg-white border border-[#08142c]/6 p-5 rounded text-center">
+            <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase mb-3">EDITORIAL STAFF & CREDITS</p>
+            <div className="grid grid-cols-3 gap-2 select-none text-[10px]">
+              <div className="py-2 bg-slate-50 border border-slate-100 rounded">
+                <div className="text-[#667085] scale-90">内容汇编</div>
+                <div className="font-semibold text-slate-800 mt-0.5">Amber / Max</div>
               </div>
-              <div className="p-1 px-1.5 bg-slate-50 border border-slate-100 rounded">
-                <div className="text-slate-400">版面设计</div>
-                <div className="font-bold text-slate-700">Amanda</div>
+              <div className="py-2 bg-slate-50 border border-slate-100 rounded">
+                <div className="text-[#667085] scale-90">编纂校对</div>
+                <div className="font-semibold text-slate-800 mt-0.5">Amanda</div>
               </div>
-              <div className="p-1 px-1.5 bg-slate-50 border border-slate-100 rounded">
-                <div className="text-slate-400">终审校对</div>
-                <div className="font-bold text-slate-700">Alicia / Lucy</div>
+              <div className="py-2 bg-slate-50 border border-slate-100 rounded">
+                <div className="text-[#667085] scale-90">执委顾问</div>
+                <div className="font-semibold text-slate-800 mt-0.5">George Qiao / Alex Chen</div>
               </div>
             </div>
           </div>
@@ -479,9 +455,9 @@ export default function SurvivalGuide() {
           
           {/* Subsection Jumper (Anchor links) within Active Category */}
           {!searchQuery && displayCategory && displayCategory.subsections.length > 1 && (
-            <div className="bg-slate-50 border border-slate-200/40 p-3.5 rounded-2xl flex flex-wrap items-center gap-2">
-              <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest font-bold ml-1 mr-2">
-                本章核心小结:
+            <div className="bg-white border border-[#08142c]/6 p-4 rounded flex flex-wrap items-center gap-2">
+              <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest font-semibold ml-1 mr-3">
+                Quick Jump / 迅速定位:
               </span>
               {displayCategory.subsections.map((sub) => (
                 <button
@@ -493,10 +469,10 @@ export default function SurvivalGuide() {
                       setActiveSubId(sub.id);
                     }
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-tight transition-colors border cursor-pointer ${
+                  className={`px-3 py-1.5 rounded text-[10px] uppercase font-mono tracking-wider transition-all border cursor-pointer ${
                     activeSubId === sub.id
-                      ? 'bg-[#C5A059] text-[#041E42] border-[#C5A059]'
-                      : 'bg-white hover:bg-slate-100 text-slate-600 border-slate-200/60'
+                      ? 'bg-[#C6A15B] text-[#071426] border-[#C6A15B]'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 border-slate-200/50'
                   }`}
                 >
                   {sub.title}
@@ -509,102 +485,102 @@ export default function SurvivalGuide() {
             <div className="space-y-8">
               
               {/* Category Page Title */}
-              <div className="border-b border-slate-200/50 pb-3 flex items-end justify-between">
+              <div className="border-b border-[#08142c]/8 pb-3.5 flex items-end justify-between">
                 <div>
-                  <h3 className="text-xl font-display font-medium text-[#041E42] tracking-wide">
+                  <h3 className="text-xl font-light text-[#071426] tracking-wide serif-display-zh">
                     {displayCategory.title}
                   </h3>
-                  <p className="text-slate-400 uppercase text-[9px] font-mono tracking-widest mt-0.5">
+                  <p className="text-slate-400 uppercase text-[8px] font-mono tracking-widest mt-0.5">
                     GEORGETOWN SURVIVAL SYSTEM • {displayCategory.chineseTitle}
                   </p>
                 </div>
                 {searchQuery && (
-                  <span className="text-[10px] text-slate-500 font-mono bg-slate-100 px-3 py-1 rounded-full">
-                    检索到 {displayCategory.subsections.length} 条符合条件信息
+                  <span className="text-[9px] text-[#667085] font-mono bg-slate-100 px-3 py-1 rounded">
+                    FOUND {displayCategory.subsections.length} MATCHES
                   </span>
                 )}
               </div>
 
               {/* Subsections list displaying expanded content */}
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {displayCategory.subsections.map((sub, idx) => (
                   <div 
                     key={sub.id} 
                     id={`guide-section-${sub.id}`}
                     onClick={() => setActiveSubId(sub.id)}
-                    className={`bg-white border rounded-2xl p-6 lg:p-8 hover:shadow-lg transition-all duration-300 relative ${
+                    className={`bg-white border rounded p-6 lg:p-8 hover:shadow-xs transition-all duration-300 relative ${
                       activeSubId === sub.id 
-                        ? 'border-[#C5A059] shadow-md shadow-[#C5A059]/5' 
-                        : 'border-slate-200/60 shadow-xs'
+                        ? 'border-[#C6A15B]' 
+                        : 'border-[#08142c]/6'
                     }`}
                   >
                     
                     {/* Visual Gold Bracket Tag for active selection */}
                     {activeSubId === sub.id && (
-                      <span className="absolute top-0 left-12 transform -translate-y-1/2 px-3 py-0.5 bg-[#C5A059] text-[#041E42] font-mono font-bold text-[8px] uppercase tracking-widest rounded-full">
-                        ACTIVE READER SECTION
+                      <span className="absolute top-0 right-8 transform -translate-y-1/2 px-3 py-1 bg-[#C6A15B] text-[#071426] font-mono text-[8px] uppercase tracking-widest rounded-sm font-bold">
+                        ACTIVE CHAPTER
                       </span>
                     )}
 
-                    <div className="flex items-start justify-between border-b border-slate-100 pb-4 mb-5">
+                    <div className="flex items-start justify-between border-b border-slate-50 pb-4 mb-5">
                       <div className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-lg bg-[#041E42] text-[#C5A059] flex items-center justify-center text-xs font-bold font-mono shadow-sm">
-                          {idx + 1}
+                        <span className="w-7 h-7 rounded bg-[#071426] text-white flex items-center justify-center text-[11px] font-semibold font-mono">
+                          0{idx + 1}
                         </span>
                         <div>
-                          <h4 className="font-bold text-slate-900 text-sm sm:text-base">{sub.title}</h4>
-                          <p className="text-[9px] text-slate-400 font-mono uppercase tracking-widest mt-0.5">{sub.chineseTitle}</p>
+                          <h4 className="font-semibold text-[#071426] text-[15px] serif-display-zh">{sub.title}</h4>
+                          <p className="text-[8px] text-[#667085] font-mono uppercase tracking-widest mt-0.5">{sub.chineseTitle}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Core Content Description */}
-                    <div className="text-xs sm:text-sm font-normal text-slate-600 leading-relaxed mb-6 whitespace-pre-line font-sans">
+                    <div className="text-[13px] font-normal text-[#5c6475] leading-relaxed mb-6 whitespace-pre-line font-sans">
                       {sub.content}
                     </div>
 
-                    {/* Interactive Bed Sizes & Custom vector lists */}
+                    {/* Bed Sizes Table */}
                     {sub.id === 'dorms' && (
-                      <div className="my-6 p-4.5 bg-slate-50 border border-slate-100 rounded-xl space-y-4">
-                        <div className="flex items-center gap-1.5 text-xs text-[#041E42] font-bold">
-                          <CheckCircle className="w-4 h-4 text-[#C5A059]" />
-                          <span>赴美及寝室常见床具规格匹配清单 (Bed Sizes Guide)</span>
+                      <div className="my-6 p-5 bg-[#FAF9F6] border border-[#08142c]/5 rounded space-y-4">
+                        <div className="flex items-center gap-2 text-xs text-[#071426] font-semibold font-serif-zh">
+                          <CheckCircle className="w-4 h-4 text-[#C6A15B]" />
+                          <span>赴美寝室床具规格快速匹配手册</span>
                         </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-[10px] font-sans">
-                          <div className="p-2 bg-white rounded border border-slate-200/60">
-                            <div className="font-bold">Twin Size</div>
-                            <div className="font-mono text-[9px] text-slate-400 mt-1">96.5 x 190.5 cm</div>
-                            <div className="text-slate-500 mt-0.5">常见单人房尺度</div>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-[10px]">
+                          <div className="p-3.5 bg-white rounded border border-[#08142c]/6">
+                            <div className="font-semibold text-slate-800">Twin Size</div>
+                            <div className="font-mono text-[9px] text-[#667085] mt-1">96.5 x 190.5 cm</div>
+                            <div className="text-slate-400 mt-0.5">普通单人床单</div>
                           </div>
-                          <div className="p-2 bg-white rounded border border-slate-200/60">
-                            <div className="font-bold">Twin XL Size</div>
-                            <div className="font-mono text-[9px] text-slate-400 mt-1">96.5 x 203 cm</div>
-                            <div className="text-[#C5A059] font-semibold mt-0.5">大一寝室通用</div>
+                          <div className="p-3.5 bg-white rounded border border-[#C6A15B]/30 bg-[#FAF9F6]">
+                            <div className="font-bold text-[#C6A15B]">Twin XL Size</div>
+                            <div className="font-mono text-[9px] text-[#C6A15B] mt-1">96.5 x 203 cm</div>
+                            <div className="text-[#071426] font-bold mt-0.5">大一寝舍统配</div>
                           </div>
-                          <div className="p-2 bg-white rounded border border-slate-200/60">
-                            <div className="font-bold">Full Size</div>
-                            <div className="font-mono text-[9px] text-slate-400 mt-1">137 x 190.5 cm</div>
-                            <div className="text-slate-500 mt-0.5">中型高层寝具款</div>
+                          <div className="p-3.5 bg-white rounded border border-[#08142c]/6">
+                            <div className="font-semibold text-slate-800">Full Size</div>
+                            <div className="font-mono text-[9px] text-[#667085] mt-1">137 x 190.5 cm</div>
+                            <div className="text-slate-400 mt-0.5">高年级双人尺寸</div>
                           </div>
-                          <div className="p-2 bg-white rounded border border-slate-200/60">
-                            <div className="font-bold">Queen Size</div>
-                            <div className="font-mono text-[9px] text-slate-400 mt-1">152 x 203 cm</div>
-                            <div className="text-[#041E42] font-semibold mt-0.5">校外租房 1.5 米床</div>
+                          <div className="p-3.5 bg-white rounded border border-[#08142c]/6">
+                            <div className="font-semibold text-slate-800">Queen Size</div>
+                            <div className="font-mono text-[9px] text-[#667085] mt-1">152 x 203 cm</div>
+                            <div className="text-slate-400 mt-0.5">校外常规1.5米</div>
                           </div>
                         </div>
                       </div>
                     )}
 
                     {sub.tips && sub.tips.length > 0 && (
-                      <div className="bg-[#FCFDFE] border border-slate-200/60 rounded-xl p-5 space-y-3 shadow-inner">
-                        <div className="flex items-center gap-2 text-xs text-[#041E42] font-bold font-sans">
-                          <Info className="w-3.5 h-3.5 text-[#C5A059]" />
-                          <span>GUCSSA 执委会特别避坑贴士</span>
+                      <div className="bg-[#FCFDFE] border-l-2 border-[#C6A15B]/80 rounded-r p-5 space-y-3 bg-[#FAF9F6]/20">
+                        <div className="flex items-center gap-2 text-xs text-[#071426] font-semibold font-serif-zh">
+                          <Info className="w-4 h-4 text-[#C6A15B]" />
+                          <span>GUCSSA 宿直委员特别批记条目</span>
                         </div>
                         <ul className="space-y-2.5">
                           {sub.tips.map((tip, tIdx) => (
-                            <li key={tIdx} className="flex items-start gap-2.5 text-xs text-slate-500 leading-relaxed font-normal">
-                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C5A059] mt-2 flex-shrink-0" />
+                            <li key={tIdx} className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed">
+                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C6A15B] mt-2 flex-shrink-0" />
                               <span>{tip}</span>
                             </li>
                           ))}
@@ -617,12 +593,12 @@ export default function SurvivalGuide() {
               </div>
             </div>
           ) : (
-            <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-gray-400 space-y-4">
+            <div className="bg-white border border-slate-200 rounded p-12 text-center text-slate-400 space-y-4">
               <HelpCircle className="w-12 h-12 text-slate-300 mx-auto" />
               <p className="text-sm">没有匹配到相关的生存指南内容...</p>
               <button 
                 onClick={() => setSearchQuery('')}
-                className="text-[#041E42] font-bold underline text-xs cursor-pointer"
+                className="text-[#071426] font-bold underline text-xs cursor-pointer"
               >
                 重置搜索并返回基本信息
               </button>

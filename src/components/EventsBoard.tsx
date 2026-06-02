@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Clock, CheckCircle2, QrCode, Ticket, ArrowLeft, Users, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Clock, CheckCircle2, QrCode, Ticket, Sparkles } from 'lucide-react';
 import { CSSAEvent } from '../types';
 
 export default function EventsBoard() {
@@ -96,7 +96,6 @@ export default function EventsBoard() {
   }, [registeredIds]);
 
   const handleOpenRegistration = (event: CSSAEvent) => {
-    // Check if or already registered, display ticket immediately instead
     const activeRegCode = localStorage.getItem(`gu-cssa-ticket-${event.id}`);
     if (activeRegCode) {
       const ticketDetails = JSON.parse(activeRegCode);
@@ -155,7 +154,7 @@ export default function EventsBoard() {
   };
 
   const categories = [
-    { id: 'all', label: '全部活动' },
+    { id: 'all', label: '全部日程' },
     { id: 'social', label: '生活社交' },
     { id: 'academic', label: '学术辅导' },
     { id: 'culture', label: '传统文化' },
@@ -163,9 +162,9 @@ export default function EventsBoard() {
   ];
 
   const pastEvents = [
-    { title: '2025年暑期新生行前交流会暨「筑梦华府 · 扬帆远航」三城巡回见面会', year: '2025 July', desc: '在北京、上海、深圳联动举办。为300多位留美青年学子及家长开展深度保姆级通关宣讲，搭建最早期校园伙伴及求学安全纽带。', img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80' },
-    { title: '2025年金秋「春晚文娱联欢会」暨千人露天包饺子中秋游园夜', year: '2025 Sep', desc: '在 Gaston Hall 与 Copley 大草坪举行。中国武术古筝展演、汉服游园体验，让每一位中外学者体验温馨非凡的中国传统文化。', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=400&q=80' },
-    { title: '波士顿-华盛顿常春藤「美东跨校辩论精英联赛」', year: '2024 Oct', desc: '联手普林斯顿、宾大、约翰霍普金斯举办的高规格国际赛辩论。', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=400&q=80' }
+    { title: '2025年秋校行前会暨「筑梦华府 · 扬帆远航」三城行新生巡回沙龙', year: '2025 July', desc: '北京、上海、深圳联动举办。为300余名已被乔大录取的留美青年学子开展深度宣讲起航辅导。', img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80' },
+    { title: '2025年金秋「中秋文娱联欢夜」暨千人露天游园会', year: '2025 Sep', desc: '在 Gaston Hall 阶梯会馆拉开序幕。现场演奏丝锦汉乐、品苏州纸酥月饼，搭建美妙团聚。', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=400&q=80' },
+    { title: '波士顿-华盛顿常熟常青藤「美东跨校辩论精英联赛」', year: '2024 Oct', desc: '携手耶鲁、普林斯顿在希利大厅主办的高端中文辩论，深度挖掘中华思辨哲学底蕴。', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=400&q=80' }
   ];
 
   const filteredEvents = activeCategory === 'all' 
@@ -173,33 +172,34 @@ export default function EventsBoard() {
     : events.filter(e => e.category === activeCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
       
       {/* Upper banner section */}
-      <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-        <span className="text-xs font-bold uppercase tracking-widest text-[#C5A059] font-mono bg-[#041E42]/5 px-3.5 py-1.5 rounded-full inline-block">
-          GU CSSA Calendar & Events
+      <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+        <span className="text-[10px] font-mono tracking-[0.25em] text-[#C6A15B] uppercase font-semibold">
+          GU CSSA CALENDAR & EVENTS
         </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#041E42] tracking-tight">
-          联合会年度学术与精彩文娱日程
+        <h2 className="text-3xl font-light text-[#071426] tracking-tight serif-display-zh leading-tight">
+          学联年度文化沙龙与学术日程
         </h2>
-        <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-          这里汇集了 GU CSSA 专为同学们策划的全部精彩瞬间。从大型传统春晚、职业内推，到轻松的户外野餐烧烤、线上选课，我们陪伴你走过在乔治城的每一个春夏秋冬！
+        <div className="w-12 h-[1px] bg-hoya-gold/50 mx-auto my-3" />
+        <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed font-normal max-w-2xl mx-auto">
+          这里有学联为您承办的全部美东常青藤官方活动。从使馆中秋晚会、名企专场内推，到户外 Waterfront Waterfront 草坪烧烤、选课指导会，我们旨在为中外学者架构卓越跨国交流平台。
         </p>
       </div>
 
       {/* Category Toggles and Tickets Status summary */}
-      <div className="flex flex-wrap items-center justify-between border-b border-slate-200 gap-4 mb-8 pb-4">
-        <div className="flex gap-1 overflow-x-auto scrollbar-none pb-2 sm:pb-0">
+      <div className="flex flex-wrap items-center justify-between border-b border-[#08142c]/8 gap-4 mb-10 pb-4">
+        <div className="flex gap-1.5 overflow-x-auto scrollbar-none pb-2 sm:pb-0">
           {categories.map((cat) => (
             <button
               key={cat.id}
               id={`event-cat-tab-${cat.id}`}
               onClick={() => setActiveCategory(cat.id as any)}
-              className={`px-4 py-2 text-xs font-bold rounded-lg transition-all duration-300 ${
+              className={`px-4.5 py-2.5 text-xs font-medium rounded transition-all duration-200 border cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#041E42] text-[#C5A059] shadow-md shadow-[#041E42]/10'
-                  : 'text-gray-500 hover:text-gray-900 hover:bg-slate-100'
+                  ? 'bg-[#071426] text-white border-hoya-gold/40'
+                  : 'bg-white hover:bg-slate-50 text-slate-500 border-transparent hover:text-slate-800'
               }`}
             >
               {cat.label}
@@ -207,93 +207,88 @@ export default function EventsBoard() {
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs text-gray-500 font-mono">
-          <Ticket className="w-4 h-4 text-[#C5A059]" />
-          <span>你共预约了 <strong className="text-[#041E42]">{registeredIds.length}</strong> 场活动门票</span>
+        <div className="flex items-center gap-2 text-xs text-[#667085] font-mono uppercase tracking-wide">
+          <Ticket className="w-4 h-4 text-[#C6A15B] stroke-[1.5]" />
+          <span>你已预订了 <strong className="text-[#071426] font-bold">{registeredIds.length}</strong> 场活动专属入校券</span>
         </div>
       </div>
 
-      {/* Events Listings Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {/* Events Listings Grid (Delicate high contrast list) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
         {filteredEvents.map((event) => {
           const isReg = registeredIds.includes(event.id);
           return (
             <div 
               key={event.id} 
               id={`event-card-${event.id}`}
-              className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="bg-white border border-[#08142c]/6 rounded overflow-hidden hover:shadow-xs transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="relative h-48 bg-slate-100 overflow-hidden">
+                <div className="relative h-52 bg-slate-100 overflow-hidden">
                   <img
                     src={event.image || 'https://picsum.photos/seed/event/600/300'}
                     alt={event.title}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 pointer-events-none"
+                    className="w-full h-full object-cover group-hover:scale-101 transition-transform duration-500 pointer-events-none filter brightness-95"
                   />
-                  <span className={`absolute top-4 right-4 text-[10px] font-bold tracking-widest uppercase text-white px-3 py-1 rounded-full shadow-md ${
-                    event.category === 'social' ? 'bg-gradient-to-r from-emerald-500 to-teal-600' :
-                    event.category === 'academic' ? 'bg-gradient-to-r from-blue-500 to-indigo-600' :
-                    event.category === 'culture' ? 'bg-gradient-to-r from-amber-500 to-orange-600' :
-                    'bg-gradient-to-r from-rose-500 to-pink-600'
-                  }`}>
-                    {event.category === 'social' ? '社交合群' :
-                     event.category === 'academic' ? '学术专题' :
-                     event.category === 'culture' ? '文化盛典' :
-                     '职业招聘'}
+                  <span className={`absolute top-4 right-4 text-[9px] font-mono tracking-widest uppercase px-3 py-1.5 rounded bg-white text-[#071426] border border-[#08142c]/10 shadow-xs font-bold`}>
+                    {event.category === 'social' ? '生活社交' :
+                     event.category === 'academic' ? '学术研讨' :
+                     event.category === 'culture' ? '文化沙龙' :
+                     '名企招聘'}
                   </span>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <div className="p-6.5 space-y-4">
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2 leading-snug">
+                    <h3 className="text-[15px] font-semibold text-slate-900 leading-snug font-serif-zh line-clamp-2">
                       {event.title}
                     </h3>
-                    <p className="text-[11px] text-[#C5A059] font-semibold font-mono uppercase tracking-wide mt-1">
+                    <p className="text-[10px] text-[#C6A15B] font-mono font-medium tracking-widest uppercase mt-1">
                       {event.chineseTitle}
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600 leading-relaxed font-normal">
+                  <p className="text-[12px] text-slate-500 leading-relaxed font-normal">
                     {event.description}
                   </p>
 
-                  <div className="space-y-2 pt-2 border-t border-slate-100 text-xs text-gray-500">
+                  <div className="space-y-2 pt-3 border-t border-slate-100 text-xs text-slate-500 font-sans">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-[#041E42]/60" />
+                      <Calendar className="w-4 h-4 text-[#071426]/50 stroke-[1.5]" />
                       <span className="font-semibold text-gray-800">{event.date}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-[#041E42]/60" />
+                      <Clock className="w-4 h-4 text-[#071426]/50 stroke-[1.5]" />
                       <span>{event.time}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-[#041E42]/60" />
+                      <MapPin className="w-4 h-4 text-[#071426]/50 stroke-[1.5]" />
                       <span className="line-clamp-1">{event.location}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 pt-0">
+              <div className="p-6.5 pt-0">
                 <button
                   id={`event-reg-btn-${event.id}`}
                   onClick={() => handleOpenRegistration(event)}
-                  className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+                  className={`w-full flex items-center justify-center gap-2.5 py-4 rounded text-xs font-mono uppercase tracking-wider transition-all duration-200 border cursor-pointer ${
                     isReg
-                      ? 'bg-slate-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-50'
-                      : 'bg-[#041E42] text-white hover:bg-[#0B2545] shadow-md shadow-[#041E42]/10'
+                      ? 'bg-[#FAF9F6] text-emerald-700 border-emerald-200'
+                      : 'bg-[#071426] text-white hover:bg-[#122844] shadow-xs'
                   }`}
                 >
                   {isReg ? (
                     <>
-                      <CheckCircle2 className="w-4.5 h-4.5" />
-                      <span>已注册，点击查看专属数字通行证</span>
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>阅读专属入场通行证 View Pass</span>
                     </>
                   ) : (
                     <>
-                      <Ticket className="w-4.5 h-4.5 text-[#C5A059]" />
-                      <span>免费预约席位 / 抢线上电子票</span>
+                      <Ticket className="w-4 h-4 text-[#C6A15B]" />
+                      <span>免费预约入席 Register Seat</span>
                     </>
                   )}
                 </button>
@@ -305,29 +300,29 @@ export default function EventsBoard() {
 
       {/* Core historical Event gallery flashback */}
       <div className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-[#C5A059]" />
+        <div className="flex items-center gap-2.5">
+          <Sparkles className="w-4.5 h-4.5 text-[#C6A15B] stroke-[1.5]" />
           <div>
-            <h3 className="text-xl font-bold text-[#041E42]">历届 CSSA 精华活动回顾</h3>
-            <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">Flashback Moments</p>
+            <h3 className="text-xl font-light text-[#071426] serif-display-zh">历代联合会精彩瞬间回顾</h3>
+            <p className="text-[8px] text-slate-400 font-mono tracking-widest uppercase">Chronicle Archive Flashback</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {pastEvents.map((pe, idx) => (
-            <div key={idx} className="bg-slate-50 border border-slate-200/50 rounded-2xl overflow-hidden shadow-xs hover:scale-[1.01] transition-transform duration-300">
-              <div className="h-36 bg-slate-200 select-none pointer-events-none relative">
+            <div key={idx} className="bg-white border border-[#08142c]/6 rounded overflow-hidden shadow-xs">
+              <div className="h-40 bg-slate-100 select-none pointer-events-none relative">
                 <img 
                   src={pe.img} 
                   alt={pe.title} 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover grayscale-20" 
+                  className="w-full h-full object-cover filter brightness-[0.93] grayscale-[15%]" 
                 />
-                <span className="absolute bottom-2.5 left-2.5 text-[9px] font-mono leading-none bg-black/60 text-white rounded px-2 py-1 font-bold">{pe.year}</span>
+                <span className="absolute bottom-3 left-3 text-[8px] font-mono leading-none bg-[#071426] text-white rounded-sm px-2 py-1 font-bold">{pe.year}</span>
               </div>
-              <div className="p-4.5 space-y-1">
-                <h4 className="font-bold text-gray-800 text-sm leading-snug line-clamp-1">{pe.title}</h4>
-                <p className="text-gray-500 text-xs leading-relaxed font-normal line-clamp-2">{pe.desc}</p>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-semibold text-slate-900 text-sm font-serif-zh leading-snug line-clamp-1">{pe.title}</h4>
+                <p className="text-slate-500 text-xs leading-relaxed font-normal line-clamp-2">{pe.desc}</p>
               </div>
             </div>
           ))}
@@ -336,54 +331,54 @@ export default function EventsBoard() {
 
       {/* Ticket Booking / QR Modal Overlay */}
       {(selectedRegEvent || activeTicket) && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#071426]/75 backdrop-blur-xs transition-opacity overflow-y-auto">
           <div 
             id="ticket-modal-inner"
-            className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto my-8"
+            className="bg-white rounded max-w-md w-full p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto my-8"
           >
             
-            {/* If Modal is in Booking Form state */}
+            {/* Booking Form Layout */}
             {selectedRegEvent && !activeTicket && (
               <form onSubmit={handleRegisterSubmit} className="space-y-5">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <div className="flex items-center gap-2 text-[#041E42]">
-                    <Ticket className="w-5 h-5 text-[#C5A059]" />
-                    <h3 className="font-extrabold text-base tracking-tight">席位电子预约单</h3>
+                  <div className="flex items-center gap-2 text-[#071426]">
+                    <Ticket className="w-5 h-5 text-[#C6A15B] stroke-[1.5]" />
+                    <h3 className="font-semibold text-[15px] serif-display-zh">活动预约信息存栏</h3>
                   </div>
                   <button 
                     type="button"
                     onClick={() => setSelectedRegEvent(null)}
-                    className="p-1 rounded-full text-gray-400 hover:bg-slate-100 hover:text-gray-700 transition"
+                    className="p-1 rounded text-slate-400 hover:bg-slate-50 hover:text-slate-700 transition"
                   >
                     ✕
                   </button>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[10px] text-gray-400 font-mono font-bold block uppercase tracking-wide">预约活动</span>
-                  <div className="text-sm font-extrabold text-[#041E42] bg-slate-50 px-3.5 py-2.5 rounded-lg border border-slate-100">
+                  <span className="text-[9px] text-[#667085] font-mono font-bold block uppercase tracking-wide">已选定主题 event title</span>
+                  <div className="text-xs font-semibold text-[#071426] bg-[#FAF9F6] px-3.5 py-3 rounded border border-slate-200/50 leading-relaxed font-serif-zh">
                     {selectedRegEvent.title}
                   </div>
                 </div>
 
-                <div className="space-y-3.5">
+                <div className="space-y-4">
                   <div className="space-y-1.5 text-xs text-gray-700">
-                    <label className="font-bold block">姓名 (中文 / 拼音) *</label>
+                    <label className="font-semibold text-[#071426] block">中文名或拼音姓名 * (Name)</label>
                     <input
                       type="text"
                       id="ticket-name-input"
                       required
                       value={ticketName}
                       onChange={(e) => setTicketName(e.target.value)}
-                      placeholder="例如: 张小华 Xiaohua Zhang"
-                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                      placeholder="例: 张同学 Xiaohua"
+                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded focus:outline-none focus:border-[#071426] text-xs placeholder-slate-400"
                     />
                   </div>
 
-                  <div className="space-y-1.5 text-xs text-gray-700">
-                    <label className="font-bold block flex items-center justify-between">
-                      <span>乔大 NetID *</span>
-                      <span className="text-[10px] text-orange-500 font-semibold font-mono lowercase">即GU邮箱前缀</span>
+                  <div className="space-y-1.5 text-xs text-slate-700">
+                    <label className="font-semibold text-[#071426] block flex items-center justify-between">
+                      <span>乔大 Hoya NetID *</span>
+                      <span className="text-[9px] text-[#C6A15B] font-semibold lowercase">即GU系统邮箱前缀</span>
                     </label>
                     <input
                       type="text"
@@ -391,28 +386,28 @@ export default function EventsBoard() {
                       required
                       value={ticketNetid}
                       onChange={(e) => setTicketNetid(e.target.value)}
-                      placeholder="例如: xz345 (邮箱前部)"
-                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] lowercase text-sm"
+                      placeholder="例: lz99 (主校NetID)"
+                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded focus:outline-none focus:border-[#071426] lowercase text-xs placeholder-slate-400"
                     />
                   </div>
 
-                  <div className="space-y-1.5 text-xs text-gray-700">
-                    <label className="font-bold block">就读学院与专业 (选填)</label>
+                  <div className="space-y-1.5 text-xs text-slate-700">
+                    <label className="font-semibold text-[#071426] block">在修主学位与方向 (Major/School)</label>
                     <input
                       type="text"
                       id="ticket-major-input"
                       value={ticketMajor}
                       onChange={(e) => setTicketMajor(e.target.value)}
-                      placeholder="例如: MS McCourt/SFS/商科"
-                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:border-[#041E42] text-sm"
+                      placeholder="例: SFS 外交大一 / MSB 硕士"
+                      className="w-full px-3.5 py-2.5 border border-slate-300 rounded focus:outline-none focus:border-[#071426] text-xs placeholder-slate-400"
                     />
                   </div>
                 </div>
 
-                <div className="bg-amber-50 rounded-xl p-3.5 border border-amber-200/50 flex gap-2.5 text-xs text-amber-800">
-                  <span className="mt-0.5 select-none">💡</span>
+                <div className="bg-[#FAF9F6] rounded p-4 border border-[#C6A15B]/20 flex gap-2.5 text-xs text-amber-800 font-sans">
+                  <span className="mt-px">💡</span>
                   <p className="leading-relaxed">
-                    凭本系统录入凭证将在您登记之后，于设备专属存储下发包含 NetID 的动态 QR Access 代码以做入场扫码验证。
+                    完成登记后，系统将自动在本地设备写入并派发附有专属 NetID 的动态数字通行证，供校内检票处扫描认证。
                   </p>
                 </div>
 
@@ -420,98 +415,91 @@ export default function EventsBoard() {
                   <button
                     type="button"
                     onClick={() => setSelectedRegEvent(null)}
-                    className="w-1/3 py-3 border border-slate-200 text-gray-600 rounded-xl font-bold text-xs hover:bg-slate-50 transition"
+                    className="w-1/3 py-2.5 border border-slate-200 text-slate-500 rounded font-bold text-xs hover:bg-slate-50 transition"
                   >
-                    取消
+                    取消 Close
                   </button>
                   <button
                     type="submit"
-                    className="w-2/3 py-3 bg-[#041E42] text-white rounded-xl font-bold text-xs hover:bg-[#0B2545] shadow-md shadow-[#041E42]/10 transition"
+                    className="w-2/3 py-2.5 bg-[#071426] text-white rounded font-bold text-xs hover:bg-[#122844] transition-all"
                   >
-                    提交并下发门票
+                    派发通行证 Submit
                   </button>
                 </div>
               </form>
             )}
 
-            {/* If Modal is in Digital Ticket badge display state */}
+            {/* Simulated Printed Pass State */}
             {activeTicket && (
               <div className="space-y-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <span className="text-xs font-bold text-emerald-600 flex items-center gap-1">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 fill-emerald-500/10" />
-                    已为您预约成功！
+                  <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-500/10" />
+                    安全登记已入册 Success
                   </span>
                   <button 
                     onClick={() => { setSelectedRegEvent(null); setActiveTicket(null); }}
-                    className="p-1 rounded-full text-gray-400 hover:bg-slate-100 hover:text-gray-700 transition"
+                    className="p-1 rounded text-slate-400 hover:bg-slate-50 hover:text-slate-750 transition"
                   >
                     ✕
                   </button>
                 </div>
 
-                {/* Styled Digital Passport Card Ticket */}
-                <div className="bg-gradient-to-br from-[#041E42] via-[#0B2545] to-[#123057] rounded-3xl p-6 text-white text-center space-y-4 shadow-xl border-t-4 border-[#C5A059] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl translate-x-12 -translate-y-12" />
+                {/* Styled Intaglio High-End Engraved Pass */}
+                <div className="bg-gradient-to-br from-[#071426] to-[#122844] rounded p-6 text-white text-center space-y-4 shadow-2xl border-t-4 border-[#C6A15B] relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl translate-x-12 -translate-y-12 animate-pulse" />
                   
-                  <div className="text-[10px] font-mono tracking-widest text-[#C5A059] uppercase font-bold">
-                    Georgetown CSSA Entry Pass
+                  <div className="text-[9px] font-mono tracking-widest text-[#C6A15B] uppercase font-bold">
+                    Georgetown Collegiate Pass
                   </div>
 
-                  <div className="py-2.5 border-y border-white/10 text-xs">
-                    <div className="font-semibold text-white truncate px-2">
+                  <div className="py-2.5 border-y border-white/5 text-xs">
+                    <div className="font-semibold text-white px-2 leading-relaxed font-serif-zh limit-2-lines">
                       {events.find(e => e.id === activeTicket.id)?.title}
                     </div>
                   </div>
 
-                  {/* Simulated QR Code containing details */}
-                  <div className="bg-white p-4.5 rounded-2xl inline-block shadow-md">
-                    <div className="relative">
-                      <QrCode className="w-36 h-36 text-gray-900 mx-auto" strokeWidth={1} />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center border-2 border-slate-500 shadow-sm">
-                          <span className="text-[10px] font-black text-slate-800 tracking-tighter">GU</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="font-mono text-[9px] text-[#041E42] font-semibold tracking-wide uppercase mt-2 select-all">
+                  {/* Stamp QR Block */}
+                  <div className="bg-white p-4 rounded inline-block shadow-lg mx-auto">
+                    <QrCode className="w-32 h-32 text-gray-950 stroke-[1]" />
+                    <div className="font-mono text-[9px] text-[#071426] font-semibold tracking-wider uppercase mt-2.5 select-all">
                       {activeTicket.ticketCode}
                     </div>
                   </div>
 
-                  {/* Registered Details */}
-                  <div className="grid grid-cols-2 gap-4 text-left border-t border-white/10 pt-4.5 text-xs">
+                  {/* Summary lists */}
+                  <div className="grid grid-cols-2 gap-4 text-left border-t border-white/5 pt-4 text-xs">
                     <div className="space-y-0.5">
-                      <span className="text-gray-400 text-[10px] font-mono uppercase">登记姓名</span>
-                      <div className="font-bold truncate">{activeTicket.name}</div>
+                      <span className="text-slate-400 text-[9px] font-mono uppercase">专属席位人</span>
+                      <div className="font-semibold max-w-[120px] truncate">{activeTicket.name}</div>
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-gray-400 text-[10px] font-mono uppercase">乔大 NetID</span>
-                      <div className="font-bold lowercase truncate font-mono">{activeTicket.netid}</div>
+                      <span className="text-slate-400 text-[9px] font-mono uppercase">认证 NetID</span>
+                      <div className="font-mono lowercase text-[#C6A15B] font-semibold max-w-[120px] truncate">{activeTicket.netid}</div>
                     </div>
                     <div className="space-y-0.5 col-span-2">
-                      <span className="text-gray-400 text-[10px] font-mono uppercase">主修专业学院</span>
-                      <div className="font-bold truncate text-[#C5A059]">{activeTicket.major || 'GU 学院'}</div>
+                      <span className="text-slate-400 text-[9px] font-mono uppercase">已挂接专业学院</span>
+                      <div className="font-semibold font-serif-zh text-slate-200 truncate">{activeTicket.major || 'GU 学院代表'}</div>
                     </div>
                   </div>
 
-                  <div className="text-[9px] text-gray-300 font-mono text-center">
-                    * 凭此卡可在活动前15分钟入场优先兑换
+                  <div className="text-[8px] text-slate-400 font-mono text-center">
+                    * 凭此终端快照，请提前15分钟往指定会堂扫二维码签到
                   </div>
                 </div>
 
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleCancelTicket(activeTicket.id)}
-                    className="w-1/2 py-2.5 border border-rose-200 text-rose-500 hover:bg-rose-50 rounded-xl text-xs font-bold transition"
+                    className="w-1/2 py-2.5 border border-rose-200 text-rose-600 hover:bg-rose-50 rounded text-xs font-bold transition"
                   >
-                    退订/取消门票
+                    取消退订门票 Void Pass
                   </button>
                   <button
                     onClick={() => { setSelectedRegEvent(null); setActiveTicket(null); }}
-                    className="w-1/2 py-2.5 bg-[#041E42] text-white hover:bg-[#0B2545] rounded-xl text-xs font-bold transition"
+                    className="w-1/2 py-2.5 bg-[#071426] text-white hover:bg-[#122844] rounded text-xs font-bold transition"
                   >
-                    完成并返回
+                    确认返回 Confirm
                   </button>
                 </div>
               </div>
